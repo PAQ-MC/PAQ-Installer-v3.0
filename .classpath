@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="Launcher"/>
 	<classpathentry kind="src" path="Common"/>
+	<classpathentry kind="src" path="Client"/>
+	<classpathentry kind="src" path="Server"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="/Users/IsaacWheeler/PAQ-Installer-v3.0/Resorces/java-semver-0.7.0.jar"/>
-	<classpathentry kind="lib" path="/Users/IsaacWheeler/PAQ-Installer-v3.0/Resorces/commons-io-2.4.jar"/>
+	<classpathentry kind="lib" path="/Users/IsaacWheeler/PAQ-Installer-v3.0/Resorces/jopt-simple-4.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
