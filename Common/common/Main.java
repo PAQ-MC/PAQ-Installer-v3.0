@@ -26,9 +26,9 @@ public class Main {
         server = options.has("s");
         
         if (server == true){
-        	start.start(mod,version,preview);
+        	start.svstart(mod,version,preview);
         }else{
-        	client.start.start(mod,version,preview);
+        	client.start.cstart(mod,version,preview);
         }
         
         	
