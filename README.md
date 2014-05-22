@@ -5,7 +5,7 @@ PAQ NON Gui Installer for both server and client
 
 
 Command line options
-=============
+====
 -m = mod pack
 
 -v = version
