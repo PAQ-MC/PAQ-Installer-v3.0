@@ -1,12 +1,15 @@
 package common;
 
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+
 import joptsimple.OptionParser;
 import joptsimple.OptionSet;
 import server.start;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException, IOException {
 		
 		OptionParser parser = new OptionParser("m::v::p::s");
         OptionSet options = parser.parse(args);
