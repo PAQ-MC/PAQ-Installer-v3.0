@@ -16,7 +16,7 @@ public class start {
 	public static void svstart(String mod, String version, boolean preview) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException, IOException {
 		System.out.println("test server");
 		
-		Forgeinstall.forge(true, "http://mage-tech.org/PAQ/forge-1.6.4-9.11.1.965-installer.jar");
+		Forgeinstall.forge(true, "http://fileserver.mage-tech.org/PAQ/1.7.2/forge-1.7.2-10.12.1.1099-installer.jar");
 		
 	}
 }
