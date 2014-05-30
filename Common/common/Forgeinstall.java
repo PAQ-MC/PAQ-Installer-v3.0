@@ -21,7 +21,8 @@ public class Forgeinstall {
 	        else
 	            args = new String[0];
 
-	        Launch.jar(tmp, args);
+	        //Launch.jar(tmp, args);
+	        
 
 	}
 }
