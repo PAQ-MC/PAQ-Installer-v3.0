@@ -11,7 +11,7 @@ public class Main {
 	
 	public static String ForgePath = "http://files.minecraftforge.net/maven/net/minecraftforge/forge/1.7.2-10.12.1.1101/forge-1.7.2-10.12.1.1101-installer.jar";
 
-	public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException, IOException {
+	public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException, IOException, InterruptedException {
 		
 		OptionParser parser = new OptionParser("m::v::p::s");
         OptionSet options = parser.parse(args);

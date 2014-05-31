@@ -15,10 +15,10 @@ public class FileUtils {
 	}
 	
     
-    public static void DelateDirectory(String SRC_FOLDER)
+    public static void DelateDirectory(File directory)
     {	
  
-    	File directory = new File(SRC_FOLDER);
+    	
  
     	//make sure directory exists
     	if(!directory.exists()){

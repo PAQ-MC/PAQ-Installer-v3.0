@@ -1,17 +1,23 @@
 package server;
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+
+import common.FileUtils;
 import common.Forgeinstall;
 
 
 //import common.FileUtils;
 
 public class start {
-	public static void svstart(String mod, String version, boolean preview) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException, IOException {
+	public static void svstart(String mod, String version, boolean preview) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException, IOException, InterruptedException {
 		System.out.println("test server");
 		
-		Forgeinstall.forge(true, common.Main.ForgePath);
+		File dir = new File(FileUtils.getCleanPath());
+
+		System.out.println(dir);
+		Forgeinstall.forgeServer(true, common.Main.ForgePath, dir);
 		
 	}
 }
