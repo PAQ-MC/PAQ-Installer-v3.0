@@ -56,8 +56,7 @@ public class start {
 			Config17X.mkdir();
 		}
 
-		InstallInfo obj = GetInstallInfo
-				.JsonInfo("http://magetech.no-ip.org/test.json");
+		InstallInfo obj = GetInstallInfo.JsonInfo();
 
 		File tmp = File.createTempFile("Config", ".jar");
 		tmp.deleteOnExit();

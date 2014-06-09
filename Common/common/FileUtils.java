@@ -37,7 +37,6 @@ public class FileUtils {
 			}
 		}
 
-		System.out.println("Done");
 	}
 
 	public static void delete(File file) throws IOException {
@@ -48,8 +47,6 @@ public class FileUtils {
 			if (file.list().length == 0) {
 
 				file.delete();
-				System.out.println("Directory is deleted : "
-						+ file.getAbsolutePath());
 
 			} else {
 
@@ -67,15 +64,12 @@ public class FileUtils {
 				// check the directory again, if empty then delete it
 				if (file.list().length == 0) {
 					file.delete();
-					System.out.println("Directory is deleted : "
-							+ file.getAbsolutePath());
 				}
 			}
 
 		} else {
 			// if file, then delete it
 			file.delete();
-			System.out.println("File is deleted : " + file.getAbsolutePath());
 		}
 	}
 
