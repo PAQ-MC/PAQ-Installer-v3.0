@@ -8,8 +8,6 @@ import joptsimple.OptionSet;
 import server.start;
 
 public class Main {
-	
-	public static String ForgePath = "http://files.minecraftforge.net/maven/net/minecraftforge/forge/1.7.2-10.12.1.1101/forge-1.7.2-10.12.1.1101-installer.jar";
 
 	public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException, IOException, InterruptedException {
 		
@@ -31,7 +29,12 @@ public class Main {
         server = options.has("s");
         
         if (server == true){
-        	start.svstart(mod,version,preview);
+        	try {
+				start.svstart(mod,version,preview);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
         }else{
         	try {
 				client.start.cstart(mod,version,preview);

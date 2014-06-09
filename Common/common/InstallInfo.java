@@ -7,6 +7,7 @@ import java.util.List;
 
 public class InstallInfo {
 	private String Config;
+	private String Forge;
 	private List<version> version;
 	private List<mods> mods;
 
@@ -29,5 +30,9 @@ public class InstallInfo {
 	
 	public String Config(){
 		return Config;
+	}
+	
+	public String Forge(){
+		return Forge;
 	}
 }

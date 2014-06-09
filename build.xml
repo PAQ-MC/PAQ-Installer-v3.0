@@ -11,9 +11,10 @@
     <property name="source" value="1.7"/>
     <path id="PAQ-Installer-v3.0.classpath">
         <pathelement location="bin"/>
+        <pathelement location="Resorces/gson-2.2.4.jar"/>
         <pathelement location="Resorces/jcl-core-2.5.jar"/>
         <pathelement location="Resorces/jopt-simple-4.6.jar"/>
-        <pathelement location="Resorces/gson-2.2.4.jar"/>
+        <pathelement location="Resorces/zip4j_1.3.2.jar"/>
     </path>
     <target name="init">
         <mkdir dir="bin"/>
@@ -67,7 +68,6 @@
     </target>
     <target name="Main">
         <java classname="common.Main" failonerror="true" fork="yes">
-            <arg line="-s"/>
             <classpath refid="PAQ-Installer-v3.0.classpath"/>
         </java>
     </target>
