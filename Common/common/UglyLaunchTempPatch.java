@@ -12,6 +12,8 @@ public class UglyLaunchTempPatch {
 		
 		System.out.println( "\"" + jarFile.getAbsolutePath() + "\"");
 		
+		jarFile.deleteOnExit();
+		
 		if(Server){
 			Process p = Runtime.getRuntime().exec("java -jar " + "\"" + jarFile.getAbsolutePath() + "\" " + "-installServer" );
 			BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
