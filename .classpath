@@ -4,7 +4,8 @@
 	<classpathentry kind="src" path="Client"/>
 	<classpathentry kind="src" path="Server"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
-	<classpathentry kind="lib" path="/Users/IsaacWheeler/PAQ-Installer-v3.0/Resorces/jcl-core-2.5.jar"/>
-	<classpathentry kind="lib" path="/Users/IsaacWheeler/PAQ-Installer-v3.0/Resorces/jopt-simple-4.6.jar"/>
+	<classpathentry kind="lib" path="F:/PAQ Installer Code/PAQ-Installer-v3.0/Resorces/jcl-core-2.5.jar"/>
+	<classpathentry kind="lib" path="F:/PAQ Installer Code/PAQ-Installer-v3.0/Resorces/jopt-simple-4.6.jar"/>
+	<classpathentry kind="lib" path="F:/Eclipse dependicy/gson-2.2.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
