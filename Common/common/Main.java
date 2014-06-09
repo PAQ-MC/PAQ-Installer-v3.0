@@ -33,7 +33,12 @@ public class Main {
         if (server == true){
         	start.svstart(mod,version,preview);
         }else{
-        	client.start.cstart(mod,version,preview);
+        	try {
+				client.start.cstart(mod,version,preview);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
         }
         
         	

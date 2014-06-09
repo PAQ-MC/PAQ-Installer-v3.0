@@ -9,7 +9,7 @@ import java.net.URL;
 import com.google.gson.Gson;
 
 public class GetInstallInfo {
-	public InstallInfo JsonInfo(String url) throws Exception{
+	public static InstallInfo JsonInfo(String url) throws Exception{
 		Gson gson = new Gson();
 		
 		BufferedReader br = read(url);
