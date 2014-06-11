@@ -1,11 +1,14 @@
 package client;
 
 import java.io.File;
+import java.io.IOException;
 
+import Json.JsonEditCodeOldPAQ;
+import argo.saj.InvalidSyntaxException;
 import common.FileUtils;
 
 public class FileCreation {
-	public static void FileCreation() {
+	public static void FileCreation() throws IOException, InvalidSyntaxException {
 		File AppPath = GetApplicationPath.AppPath();
 		File PAQ164 = new File(AppPath.toString() + "/PAQ/Instances/PAQ");
 		File PAQ17X = new File(AppPath.toString() + "/PAQ/PAQ1.7.X");
@@ -14,6 +17,9 @@ public class FileCreation {
 
 		if (PAQ164.exists()) {
 			PAQ164.renameTo(new File(AppPath.toString() + "/PAQ/OldPAQ1.6.4"));
+			JsonEditCodeOldPAQ.Main(AppPath.toString()
+					+ "/.minecraft", "1.10.0",
+					AppPath.toString() + "/PAQ/OldPAQ1.6.4");
 			FileUtils.DelateDirectory(new File(AppPath.toString()
 					+ "/PAQ/Installer"));
 			FileUtils.DelateDirectory(new File(AppPath.toString()

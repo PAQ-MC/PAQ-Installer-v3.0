@@ -1,13 +1,10 @@
-package common;
-
-import common.mods;
-import common.version;
+package Json;
 
 import java.util.List;
 
 public class InstallInfo {
 	private String Config;
-	private String Forge;
+	private List<forge> Forge;
 	private List<version> version;
 	private List<mods> mods;
 
@@ -31,8 +28,8 @@ public class InstallInfo {
 	public String Config(){
 		return Config;
 	}
-	
-	public String Forge(){
+
+	public List<forge> forge(){
 		return Forge;
 	}
 }

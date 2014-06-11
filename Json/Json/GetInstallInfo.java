@@ -1,7 +1,6 @@
-package common;
+package Json;
 
 import common.Versioninfo;
-import common.InstallInfo;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

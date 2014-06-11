@@ -1,13 +1,11 @@
 package server;
 
 import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 
+import Json.GetInstallInfo;
+import Json.InstallInfo;
 import common.FileUtils;
 import common.Forgeinstall;
-import common.GetInstallInfo;
-import common.InstallInfo;
 
 
 //import common.FileUtils;
@@ -21,7 +19,7 @@ public class start {
 		System.out.println(dir);
 		
 		InstallInfo obj = GetInstallInfo.JsonInfo();
-		Forgeinstall.forgeServer(true, obj.Forge(), dir);
+		Forgeinstall.forgeServer(true, obj.forge().get(0).installer(), dir);
 		
 	}
 }
