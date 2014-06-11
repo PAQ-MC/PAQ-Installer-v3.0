@@ -20,7 +20,7 @@ public class ModsDownload {
 				URL modUrl = new URL(obj.mods().get(i).link());
 
 				File modfile = new File(Mods17X.toString() + "/"
-						+ UrlFormator(modUrl));
+						+ obj.mods().get(i).name());
 
 				System.out.println(modfile.toString());
 
@@ -67,12 +67,5 @@ public class ModsDownload {
 			}
 
 		}
-	}
-
-	private static String UrlFormator(URL url) {
-		String file = url.getFile();
-		String filename = file.substring(file.lastIndexOf("/"));
-		return filename;
-
 	}
 }

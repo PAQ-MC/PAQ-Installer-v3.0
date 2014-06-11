@@ -15,7 +15,7 @@ import common.StreamUtils;
 //import common.FileUtils;
 
 public class start {
-	public static void svstart(String mod, String version, boolean preview)
+	public static void svstart(String mod, String version)
 			throws Exception {
 		System.out.println("test server");
 
@@ -23,7 +23,7 @@ public class start {
 
 		System.out.println(dir);
 
-		InstallInfo obj = GetInstallInfo.JsonInfo();
+		InstallInfo obj = GetInstallInfo.JsonInfo(version, mod);
 
 		File Mods17X = new File(dir.toString() + "/mods");
 		File Config17X = new File(dir.toString() + "/config");

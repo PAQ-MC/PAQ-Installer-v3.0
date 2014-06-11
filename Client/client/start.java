@@ -21,7 +21,7 @@ import common.ModsDownload;
 
 public class start {
 
-	public static void cstart(String mod, String version, boolean preview)
+	public static void cstart(String mod, String version)
 			throws Exception {
 		gui.main();
 		Gui.consolegui();
@@ -42,7 +42,7 @@ public class start {
 							System.out.println("Install Button Clicked");
 							System.out.println("Begining Install");
 							System.out.println("Installing client");
-							InstallInfo obj = GetInstallInfo.JsonInfo();
+							InstallInfo obj = GetInstallInfo.JsonInfo(version, mod);
 
 							Forgeinstall.forge(false, obj.forge().get(0)
 									.installer());

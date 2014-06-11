@@ -1,7 +1,5 @@
 package Json;
 
-import common.Versioninfo;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -9,15 +7,26 @@ import java.net.URL;
 import com.google.gson.Gson;
 
 public class GetInstallInfo {
-	public static InstallInfo JsonInfo() throws Exception {
+	public static InstallInfo JsonInfo(String version,
+			String versionInfoRepostory) throws Exception {
 		Gson gson = new Gson();
 
-		BufferedReader br = read("http://magetech.no-ip.org/versioninfo.json");
+		if (versionInfoRepostory != null) {
+
+		} else {
+			//versionInfoRepostory = new URL("http://mage-tech.org/PAQ/versioninfo.json").toString();
+		}
+		BufferedReader br = read("http://mage-tech.org/PAQ/versioninfo.json");
 
 		Versioninfo Versioninfo = gson.fromJson(br, Versioninfo.class);
 
-		BufferedReader br2 = read(Versioninfo.InstallInfoDirectory()
-				+ Versioninfo.versions().get(Versioninfo.versions().size() - 1)
+		if (version != null) {
+
+		} else {
+			version = Versioninfo.versions()
+					.get(Versioninfo.versions().size() - 1).toString();
+		}
+		BufferedReader br2 = read(Versioninfo.InstallInfoDirectory() + version
 				+ ".json");
 
 		InstallInfo obj = gson.fromJson(br2, InstallInfo.class);

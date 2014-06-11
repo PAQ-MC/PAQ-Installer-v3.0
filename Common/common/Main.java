@@ -1,6 +1,5 @@
 package common;
 
-
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import javax.swing.UIManager;
@@ -11,45 +10,40 @@ import server.start;
 
 public class Main {
 
-	public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException, IOException, InterruptedException {
-		
-        
-        
-		
-		OptionParser parser = new OptionParser("m::v::p::s");
-        OptionSet options = parser.parse(args);
-        
-        String mod = "PAQ";
-        String version = null;
-        boolean preview = false;
-        boolean server = false;
+	public static void main(String[] args) throws ClassNotFoundException,
+			NoSuchMethodException, InvocationTargetException,
+			IllegalAccessException, IOException, InterruptedException {
 
-        if(options.has("m")){
-            mod = (String)options.valueOf("m");
-        }
-        if(options.has("v")){
-            version = (String)options.valueOf("v");
-        }
-        preview = options.has("p");
-        server = options.has("s");
-        
-        if (server == true){
-        	try {
-				start.svstart(mod,version,preview);
+		OptionParser parser = new OptionParser("m::v::s");
+		OptionSet options = parser.parse(args);
+
+		String mod = "PAQ";
+		String version = null;
+		boolean server = false;
+
+		if (options.has("m")) {
+			mod = (String) options.valueOf("m");
+		}
+		if (options.has("v")) {
+			version = (String) options.valueOf("v");
+		}
+		server = options.has("s");
+
+		if (server == true) {
+			try {
+				start.svstart(mod, version);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-        }else{
-        	try {
-        		client.start.cstart(mod,version,preview);
+		} else {
+			try {
+				client.start.cstart(mod, version);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-        }
-        
-        	
+		}
 
 	}
 

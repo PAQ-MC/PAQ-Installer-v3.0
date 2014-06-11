@@ -1,6 +1,4 @@
-package common;
-
-import Json.version;
+package Json;
 
 import java.util.List;
 

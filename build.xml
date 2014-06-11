@@ -1,74 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- WARNING: Eclipse auto-generated file.
-              Any modifications will be overwritten.
-              To include a user specific buildfile here, simply create one in the same
-              directory with the processing instruction <?eclipse.ant.import?>
-              as the first entry and export the buildfile again. --><project basedir="." default="build" name="PAQ-Installer-v3.0">
-    <property environment="env"/>
-    <property name="ECLIPSE_HOME" value="../../eclipse"/>
-    <property name="debuglevel" value="source,lines,vars"/>
-    <property name="target" value="1.7"/>
-    <property name="source" value="1.7"/>
-    <path id="PAQ-Installer-v3.0.classpath">
-        <pathelement location="bin"/>
-        <pathelement location="Resorces/gson-2.2.4.jar"/>
-        <pathelement location="Resorces/jcl-core-2.5.jar"/>
-        <pathelement location="Resorces/jopt-simple-4.6.jar"/>
-        <pathelement location="Resorces/zip4j_1.3.2.jar"/>
-    </path>
-    <target name="init">
-        <mkdir dir="bin"/>
-        <copy includeemptydirs="false" todir="bin">
-            <fileset dir="Common">
-                <exclude name="**/*.launch"/>
-                <exclude name="**/*.java"/>
-            </fileset>
-        </copy>
-        <copy includeemptydirs="false" todir="bin">
-            <fileset dir="Client">
-                <exclude name="**/*.launch"/>
-                <exclude name="**/*.java"/>
-            </fileset>
-        </copy>
-        <copy includeemptydirs="false" todir="bin">
-            <fileset dir="Server">
-                <exclude name="**/*.launch"/>
-                <exclude name="**/*.java"/>
-            </fileset>
-        </copy>
-    </target>
-    <target name="clean">
-        <delete dir="bin"/>
-    </target>
-    <target depends="clean" name="cleanall"/>
-    <target depends="build-subprojects,build-project" name="build"/>
-    <target name="build-subprojects"/>
-    <target depends="init" name="build-project">
-        <echo message="${ant.project.name}: ${ant.file}"/>
-        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
-            <src path="Common"/>
-            <src path="Client"/>
-            <src path="Server"/>
-            <classpath refid="PAQ-Installer-v3.0.classpath"/>
-        </javac>
-    </target>
-    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
-    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
-        <copy todir="${ant.library.dir}">
-            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
-        </copy>
-        <unzip dest="${ant.library.dir}">
-            <patternset includes="jdtCompilerAdapter.jar"/>
-            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
-        </unzip>
-    </target>
-    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
-        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
-        <antcall target="build"/>
-    </target>
-    <target name="Main">
-        <java classname="common.Main" failonerror="true" fork="yes">
-            <classpath refid="PAQ-Installer-v3.0.classpath"/>
-        </java>
+<project default="create_run_jar" name="Create Runnable Jar for Project PAQ-Installer-v3.0">
+    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
+    <!--ANT 1.7 is required                                        -->
+    <target name="create_run_jar">
+        <jar destfile="F:/PAQ Installer Code/PAQ-Installer-v3.0.jar" filesetmanifest="mergewithoutmain">
+            <manifest>
+                <attribute name="Main-Class" value="common.Main"/>
+                <attribute name="Class-Path" value="."/>
+            </manifest>
+            <fileset dir="F:/PAQ Installer Code/PAQ-Installer-v3.0/bin"/>
+            <zipfileset excludes="META-INF/*.SF" src="F:/PAQ Installer Code/PAQ-Installer-v3.0/Resorces/gson-2.2.4.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="F:/PAQ Installer Code/PAQ-Installer-v3.0/Resorces/jcl-core-2.5.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="F:/PAQ Installer Code/PAQ-Installer-v3.0/Resorces/jopt-simple-4.6.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="F:/PAQ Installer Code/PAQ-Installer-v3.0/Resorces/zip4j_1.3.2.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="F:/PAQ Installer Code/PAQ-Installer-v3.0/Resorces/argo-3.7.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="F:/PAQ Installer Code/PAQ-Installer-v3.0/Resorces/guava-14.0.1.jar"/>
+        </jar>
     </target>
 </project>
