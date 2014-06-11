@@ -1,4 +1,6 @@
 /Json
 /common
-/client
 /server
+/gui
+/client
+/res
