@@ -8,7 +8,7 @@
                 <attribute name="Main-Class" value="common.Main"/>
                 <attribute name="Class-Path" value="."/>
             </manifest>
-            <fileset dir="F:/PAQ Installer Code/PAQ-Installer-v3.0/bin"/>
+            <fileset dir="bin"/>
             <zipfileset excludes="META-INF/*.SF" src="F:/PAQ Installer Code/PAQ-Installer-v3.0/Resorces/gson-2.2.4.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="F:/PAQ Installer Code/PAQ-Installer-v3.0/Resorces/jcl-core-2.5.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="F:/PAQ Installer Code/PAQ-Installer-v3.0/Resorces/jopt-simple-4.6.jar"/>
