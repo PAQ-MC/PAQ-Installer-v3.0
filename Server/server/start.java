@@ -1,3 +1,13 @@
+/*
+This work is licensed under the Creative Commons
+Attribution-NonCommercial 3.0 Unported License.
+To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/3.0/.
+*/
+
+/***
+	Created By Isaac Wheeler
+*/
+
 package server;
 
 import java.io.File;
@@ -8,51 +18,77 @@ import client.FileCreation;
 import Json.GetInstallInfo;
 import Json.InstallInfo;
 import common.FileUtils;
-import common.Forgeinstall;
-import common.ModsDownload;
+import common.Main;
 import common.StreamUtils;
 
-//import common.FileUtils;
 
 public class start {
 	public static void svstart(String mod, String version)
 			throws Exception {
-		System.out.println("test server");
+		Main.print("test server");
 
 		File dir = new File(FileUtils.getCleanPath());
 
-		System.out.println(dir);
+		Main.print(dir.toString());
 
-		InstallInfo obj = GetInstallInfo.JsonInfo(version, mod);
+		InstallInfo obj = GetInstallInfo.JsonInfo();
 
-		File Mods17X = new File(dir.toString() + "/mods");
-		File Config17X = new File(dir.toString() + "/config");
+		File Mods = new File(dir.toString() + "/mods");
+		File Config = new File(dir.toString() + "/config");
 
-		if (Mods17X.exists()) {
-			Mods17X.delete();
+		if (Mods.exists()) {
+			FileUtils.DelateDirectory(Mods);
 		}
-		Mods17X.mkdir();
+		Mods.mkdir();
 
-		if (Config17X.exists()) {
-			Config17X.delete();
+		if (Config.exists()) {
+			FileUtils.DelateDirectory(Config);
 		}
-		Config17X.mkdirs();
+		Config.mkdirs();
 
-		FileCreation.FileCreation();
+		FileCreation.FileMake();
 		File config = File.createTempFile("Config", ".zip");
 		config.deleteOnExit();
 		try (InputStream is = new URL(obj.Config()).openStream()) {
 			StreamUtils.saveTo(is, config);
 		}
 
-		FileUtils.unzip(config.toString(), Config17X.toString());
+		FileUtils.unzip(config.toString(), Config.toString());
 
-		ModsDownload.modsDownload(obj, Mods17X, true);
+		ModsDownload.modsDownload(obj, Mods, true);
 		
-		System.out.println("Installing Forge Stuff please Stand by");
+		Main.print("Installing Forge Stuff please Stand by");
+		
+		File libraies = new File(dir.toString() + "/libraries");
+		
+		if (libraies.exists()) {
+			FileUtils.DelateDirectory(libraies);
+		}
+		
+		File mcserver = new File(dir.toString() + "/minecraft_server.1.7.2.jar");  //TODO: make better handling for future minecraft versions
+		
+		if (mcserver.exists()) {
+			mcserver.delete();
+		}
+		
+		File paqServer = new File(dir.toString() + "/PAQ.jar");
+		
+		if (paqServer.exists()){
+			paqServer.delete();
+		}
+		
+		
+		File ServerZip = File.createTempFile("ServerZip", ".zip");
+		ServerZip.deleteOnExit();
+		try (InputStream is = new URL(obj.forge().get(0).ServerZip())
+				.openStream()) {
+			StreamUtils.saveTo(is, ServerZip);
+		}
 
-		Forgeinstall.forgeServer(true, obj.forge().get(0).installer(), dir);
+		FileUtils.unzip(ServerZip.toString(),
+				dir.toString());
+
 		
-		System.out.println("Server Install Done");
+		Main.print("Server Install Done");
 	}
 }

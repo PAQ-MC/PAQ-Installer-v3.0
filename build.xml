@@ -3,18 +3,18 @@
     <!--this file was created by Eclipse Runnable JAR Export Wizard-->
     <!--ANT 1.7 is required                                        -->
     <target name="create_run_jar">
-        <jar destfile="PAQ-Installer-v3.0.jar" filesetmanifest="mergewithoutmain">
+        <jar destfile="F:/PAQ Installer Code/PAQ-Installer-v3.0.jar" filesetmanifest="mergewithoutmain">
             <manifest>
                 <attribute name="Main-Class" value="common.Main"/>
                 <attribute name="Class-Path" value="."/>
             </manifest>
-            <fileset dir="bin"/>
-            <zipfileset excludes="META-INF/*.SF" src="Resorces/gson-2.2.4.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="Resorces/jcl-core-2.5.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="Resorces/jopt-simple-4.6.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="Resorces/zip4j_1.3.2.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="Resorces/argo-3.7.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="Resorces/guava-14.0.1.jar"/>
+            <fileset dir="F:/PAQ Installer Code/PAQ-Installer-v3.0/bin"/>
+            <zipfileset excludes="META-INF/*.SF" src="F:/PAQ Installer Code/PAQ-Installer-v3.0/Resorces/gson-2.2.4.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="F:/PAQ Installer Code/PAQ-Installer-v3.0/Resorces/jcl-core-2.5.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="F:/PAQ Installer Code/PAQ-Installer-v3.0/Resorces/jopt-simple-4.6.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="F:/PAQ Installer Code/PAQ-Installer-v3.0/Resorces/zip4j_1.3.2.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="F:/PAQ Installer Code/PAQ-Installer-v3.0/Resorces/argo-3.7.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="F:/PAQ Installer Code/PAQ-Installer-v3.0/Resorces/guava-14.0.1.jar"/>
         </jar>
     </target>
 </project>

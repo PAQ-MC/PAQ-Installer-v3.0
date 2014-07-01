@@ -1,11 +1,19 @@
+/*
+This work is licensed under the Creative Commons
+Attribution-NonCommercial 3.0 Unported License.
+To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/3.0/.
+*/
+
+/***
+	Created By Isaac Wheeler
+*/
+
 package Json;
 
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
-
-import javax.swing.JOptionPane;
 
 import com.google.common.base.Charsets;
 import com.google.common.collect.Maps;
@@ -20,6 +28,8 @@ import argo.jdom.JsonRootNode;
 import argo.jdom.JsonStringNode;
 import argo.saj.InvalidSyntaxException;
 
+import common.Main;
+
 
 public class JsonEditCode {
 
@@ -29,7 +39,7 @@ public class JsonEditCode {
         File launcherProfiles = new File(jsonlocation + "/launcher_profiles.json");
         if (!launcherProfiles.exists())
         {
-        	System.out.println("minecraft launcher profile missing, you need to run the minecraft launcher first!");
+        	Main.print("minecraft launcher profile missing, you need to run the minecraft launcher first!");
         }
   
         JdomParser parser = new JdomParser();

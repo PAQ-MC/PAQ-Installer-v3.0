@@ -1,3 +1,13 @@
+/*
+This work is licensed under the Creative Commons
+Attribution-NonCommercial 3.0 Unported License.
+To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/3.0/.
+ */
+
+/***
+ Created By Isaac Wheeler
+ */
+
 package Json;
 
 import java.io.BufferedReader;
@@ -5,18 +15,19 @@ import java.io.InputStreamReader;
 import java.net.URL;
 
 import com.google.gson.Gson;
+import common.Main;
 
 public class GetInstallInfo {
-	public static InstallInfo JsonInfo(String version,
-			String versionInfoRepostory) throws Exception {
+	public static InstallInfo JsonInfo() throws Exception {
+		String version = Main._version;
 		Gson gson = new Gson();
+		BufferedReader br;
+		if (Main._mod != null) {
 
-		if (versionInfoRepostory != null) {
-
+			br = read(Main._mod);
 		} else {
-			//versionInfoRepostory = new URL("http://mage-tech.org/PAQ/versioninfo.json").toString();
+			br = read("http://mage-tech.org/PAQ/versioninfo.json");
 		}
-		BufferedReader br = read("http://mage-tech.org/PAQ/versioninfo.json");
 
 		Versioninfo Versioninfo = gson.fromJson(br, Versioninfo.class);
 

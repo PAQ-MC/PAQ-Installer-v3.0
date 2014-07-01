@@ -1,6 +1,18 @@
+/*
+This work is licensed under the Creative Commons
+Attribution-NonCommercial 3.0 Unported License.
+To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/3.0/.
+*/
+
+/***
+	Created By Isaac Wheeler
+*/
+
 package client;
 
 import java.io.File;
+
+import common.Main;
 
 public class GetApplicationPath {
 
@@ -23,7 +35,7 @@ public class GetApplicationPath {
 			File AppPath = new File(System.getProperty("user.home"));
 			return AppPath;
 		} else {
-			System.out.println("error os not known");
+			Main.print("error os not known");
 			return null;
 		}
 	}

@@ -1,3 +1,14 @@
+/*
+This work is licensed under the Creative Commons
+Attribution-NonCommercial 3.0 Unported License.
+To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/3.0/.
+*/
+
+/***
+	Created By Isaac Wheeler
+*/
+
+
 package common;
 
 import java.io.File;
@@ -22,7 +33,7 @@ public class FileUtils {
 		// make sure directory exists
 		if (!directory.exists()) {
 
-			System.out.println("Directory does not exist.");
+			Main.print("Directory does not exist.");
 			System.exit(0);
 
 		} else {

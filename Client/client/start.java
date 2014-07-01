@@ -1,97 +1,112 @@
+/*
+This work is licensed under the Creative Commons
+Attribution-NonCommercial 3.0 Unported License.
+To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/3.0/.
+ */
+
+/***
+ Created By Isaac Wheeler
+ */
+
 package client;
 
-import gui.StdDraw;
-import gui.gui;
+import gui.PAQInstallerV3;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
+import java.net.MalformedURLException;
 import java.net.URL;
 
-import javax.swing.UIManager;
+import javax.swing.JOptionPane;
 
+import argo.saj.InvalidSyntaxException;
 import Json.GetInstallInfo;
 import Json.InstallInfo;
 import Json.JsonEditCode;
 import common.FileUtils;
 import common.Forgeinstall;
+import common.Main;
 import common.StreamUtils;
-import common.ModsDownload;
 
 public class start {
 
-	public static void cstart(String mod, String version)
-			throws Exception {
-		gui.main();
-		Gui.consolegui();
-		boolean programloop = true;
-		while (programloop == true) {
+	public static void cstart() throws InterruptedException {
+		Main.print("Install Button Clicked");
+		Main.print("Begining Install");
+		Main.print("Installing client");
+		InstallInfo obj = null;
+		try {
+			obj = GetInstallInfo.JsonInfo();
+		} catch (Exception e) {
 
-			boolean doLoop = true;
-			while (doLoop == true) {
-				double x;
-				double y;
-
-				if (StdDraw.mousePressed()) {
-					x = StdDraw.mouseX();
-					y = StdDraw.mouseY();
-					// Install
-					if (x >= .3 - .3 && x <= .3 + .3) {
-						if (y >= .25 - .2 && y <= .25 + .2) {
-							System.out.println("Install Button Clicked");
-							System.out.println("Begining Install");
-							System.out.println("Installing client");
-							InstallInfo obj = GetInstallInfo.JsonInfo(version, mod);
-
-							Forgeinstall.forge(false, obj.forge().get(0)
-									.installer());
-
-							File AppPath = GetApplicationPath.AppPath();
-							File PAQ17X = new File(AppPath.toString()
-									+ "/PAQ/PAQ1.7.X");
-							File Mods17X = new File(PAQ17X.toString() + "/mods");
-							File Config17X = new File(PAQ17X.toString()
-									+ "/config");
-
-							FileCreation.FileCreation();
-							File config = File.createTempFile("Config", ".zip");
-							config.deleteOnExit();
-							try (InputStream is = new URL(obj.Config())
-									.openStream()) {
-								StreamUtils.saveTo(is, config);
-							}
-
-							FileUtils.unzip(config.toString(),
-									Config17X.toString());
-
-							ModsDownload.modsDownload(obj, Mods17X, true);
-
-							JsonEditCode.Main(AppPath.toString()
-									+ "/.minecraft", PAQ17X.toString(), obj
-									.forge().get(0).id());
-
-							System.out.println("Client install done");
-							Thread.sleep(1000);
-							System.exit(0);
-						}
-					}
-					// Exit
-					if (x >= .7 - .3 && x <= .7 + .3) {
-						if (y >= .25 - .2 && y <= .25 + .2) {
-							System.out.println("Exit Button Clicked");
-							System.out.println("Exiting");
-							System.exit(0);
-							doLoop = false;
-						}
-					}
-				}
-
-			}
+			e.printStackTrace();
 		}
 
-		while (StdDraw.mousePressed())
-			;
+		try {
+			if (!getforgeid.findForgeProfile().contentEquals(
+					obj.forge().get(0).id())) {
+				Forgeinstall.forge(false, obj.forge().get(0).installer());
+			}
+
+		} catch ( Exception e) {
+
+			e.printStackTrace();
+		}
+
+		File AppPath = GetApplicationPath.AppPath();
+		File PAQ17X = new File(AppPath.toString() + "/PAQ/PAQ1.7.X");
+		File Mods17X = new File(PAQ17X.toString() + "/mods");
+		File Config17X = new File(PAQ17X.toString() + "/config");
+
+		try {
+			FileCreation.FileMake();
+		} catch (IOException | InvalidSyntaxException e) {
+
+			e.printStackTrace();
+		}
+		File config = null;
+		try {
+			config = File.createTempFile("Config", ".zip");
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+		config.deleteOnExit();
+		try (InputStream is = new URL(obj.Config()).openStream()) {
+			StreamUtils.saveTo(is, config);
+		} catch (MalformedURLException e) {
+
+			e.printStackTrace();
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+
+		FileUtils.unzip(config.toString(), Config17X.toString());
+		
+		JOptionPane.showMessageDialog(PAQInstallerV3.window.frame, "About to install mods, the twitching box is to indicate status of download");
+
+		ModsDownload.modsDownload(obj, Mods17X, true);
+
+		try {
+			JsonEditCode.Main(AppPath.toString() + "/.minecraft",
+					PAQ17X.toString(), obj.forge().get(0).id());
+		} catch (IOException | InvalidSyntaxException e) {
+			e.printStackTrace();
+		}
+
+		Main.print("Client install done");
+		JOptionPane.showMessageDialog(PAQInstallerV3.window.frame, "Install done please enjoy the mod pack");
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+		System.exit(0);
 	}
+
 
 }
