@@ -10,6 +10,7 @@ To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/
  with refrence to http://stackoverflow.com/questions/21954581/using-swing-gui-to-make-a-progress-bar-show-up-while-downloading-a-file
  */
 
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -18,8 +19,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.concurrent.ExecutionException;
 
-import javax.swing.JFrame;
-import javax.swing.SwingWorker;
+import javax.swing.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
@@ -42,6 +42,7 @@ public class Downloader implements Runnable {
 		
 		
 		while (status != true) {
+			System.out.print("");
 		}
 		frm.dispose();
 	}
@@ -49,14 +50,21 @@ public class Downloader implements Runnable {
 	@Override
 	public void run() {
 		frm = new JFrame();
+		JLabel textLabel;
 		final JProgressBar current = new JProgressBar(0, 100);
-		current.setSize(50, 100);
+		current.setSize(300, 100);
 		current.setValue(0);
 		current.setStringPainted(true);
+		if(file.getName().length() > 20){
+			textLabel = new JLabel("Downloading: " + file.getName().subSequence(0, 20) + "..." ,SwingConstants.CENTER); 
+		} else {
+			textLabel = new JLabel("Downloading: " + file.getName() ,SwingConstants.CENTER);
+		}
 		frm.add(current);
+		frm.add(textLabel);
 		frm.setVisible(true);
 		frm.setLayout(new FlowLayout());
-		frm.setSize(50, 100);
+		frm.setSize(300, 100);
 		frm.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		final Worker worker = new Worker(site, file);
 		worker.addPropertyChangeListener(new PropertyChangeListener() {
@@ -77,6 +85,7 @@ public class Downloader implements Runnable {
 			}
 		});
 		worker.execute();
+		
 	}
 
 }
@@ -108,7 +117,6 @@ class Worker extends SwingWorker<Void, Void> {
 					totalDataRead = totalDataRead + i;
 					bout.write(data, 0, i);
 					int percent = Math.abs((totalDataRead * 100) / filesize);
-					System.out.println(percent);
 					setProgress(percent);
 				}
 			}

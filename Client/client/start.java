@@ -15,7 +15,7 @@ import gui.PAQInstallerV3;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.InvocationTargetException;
+//import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -45,6 +45,13 @@ public class start {
 		}
 
 		try {
+			String McVersion = obj.forge().get(0).id();
+			McVersion = McVersion.substring(0, 5); //TODO: find better method
+			if (!getforgeid.findLastUsedMcVersion().contentEquals(McVersion)){
+				Main.infoBox("Please Run: " + McVersion + " At least once, You Currently Have selected: " + getforgeid.findLastUsedMcVersion() + " Program Exiting" , "Warrning");
+				Main.print(McVersion + " does not match " + getforgeid.findLastUsedMcVersion());
+				Main.exit(0);
+			}
 			if (!getforgeid.findForgeProfile().contentEquals(
 					obj.forge().get(0).id())) {
 				Forgeinstall.forge(false, obj.forge().get(0).installer());
@@ -86,7 +93,8 @@ public class start {
 
 		FileUtils.unzip(config.toString(), Config17X.toString());
 		
-		JOptionPane.showMessageDialog(PAQInstallerV3.window.frame, "About to install mods, the twitching box is to indicate status of download");
+	//JOptionPane.showMessageDialog(PAQInstallerV3.window.frame, "About to install mods, the twitching box is to indicate status of download");
+		JOptionPane.showMessageDialog(null, "About to install mods, the twitching box is to indicate status of download");
 
 		ModsDownload.modsDownload(obj, Mods17X, true);
 
@@ -98,7 +106,8 @@ public class start {
 		}
 
 		Main.print("Client install done");
-		JOptionPane.showMessageDialog(PAQInstallerV3.window.frame, "Install done please enjoy the mod pack");
+		//JOptionPane.showMessageDialog(PAQInstallerV3.window.frame, "Install done please enjoy the mod pack");
+		JOptionPane.showMessageDialog(null, "Install done please enjoy the mod pack");
 		try {
 			Thread.sleep(1000);
 		} catch (InterruptedException e) {

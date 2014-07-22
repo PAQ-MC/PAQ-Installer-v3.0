@@ -40,7 +40,7 @@ public class Forgeinstall {
 
 		File tmp = File.createTempFile("forge", ".jar");
 		tmp.deleteOnExit();
-				
+
 		try {
 			Downloader.main(forgeUrl, tmp);
 		} catch (InterruptedException e) {

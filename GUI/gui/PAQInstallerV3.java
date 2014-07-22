@@ -63,7 +63,7 @@ public class PAQInstallerV3 {
 		frame.setType(Type.UTILITY);
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 803, 576);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("New label");
@@ -75,7 +75,9 @@ public class PAQInstallerV3 {
 		tglbtnInstall.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
+					frame.dispose();
 					start.cstart();
+					
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

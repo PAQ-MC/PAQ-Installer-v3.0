@@ -56,6 +56,30 @@ public class getforgeid {
         return configFile;
     }
 	
+	public static String findLastUsedMcVersion() throws IOException {
+        File configFile = getConfigFile();
+
+        Gson gson = GsonUtil.make();
+        JsonObject jobj;
+        try (InputStream is = new FileInputStream(configFile);
+            InputStreamReader isr = new InputStreamReader(is)) {
+            jobj = gson.fromJson(isr, JsonElement.class).getAsJsonObject();
+        }
+
+        String selectedprofile = jobj.getAsJsonPrimitive("selectedProfile").getAsString();
+        
+        JsonObject profiles = jobj.getAsJsonObject("profiles");
+        JsonObject forge = profiles.getAsJsonObject(selectedprofile);
+        if(forge == null)
+            return null;
+
+        String lastVersionID = forge.getAsJsonPrimitive("lastVersionId").getAsString();
+        if(lastVersionID.length() > 6){
+        	lastVersionID = lastVersionID.substring(0, 5); //TODO: work out better way to get mc version.
+        }
+        return lastVersionID;
+    }
+	
 	
 
 }
