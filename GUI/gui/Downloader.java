@@ -47,7 +47,7 @@ public class Downloader implements Runnable {
 			System.out.print("");
 		}
 		Main.print("holding to not over load server");
-		Thread.sleep(1000);
+		Thread.sleep(5000);
 		frm.dispose();
 		
 	}
