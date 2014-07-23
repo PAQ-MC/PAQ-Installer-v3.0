@@ -19,15 +19,17 @@ import java.lang.reflect.InvocationTargetException;
 
 public class UglyLaunchTempPatch {
 
+	//code for lunching extranial jar file 
 	public static void jar(File jarFile, Boolean Server) throws IOException,
 			ClassNotFoundException, NoSuchMethodException,
 			InvocationTargetException, IllegalAccessException,
 			InterruptedException {
 
 		Main.print("\"" + jarFile.getAbsolutePath() + "\"");
-
+		//sets jar to deleate on exit of program
 		jarFile.deleteOnExit();
 
+		//checks if server value is true and adds the requared argment
 		if (Server) {
 			Process p = Runtime.getRuntime().exec(
 					"java -jar " + "\"" + jarFile.getAbsolutePath() + "\" "
@@ -37,7 +39,7 @@ public class UglyLaunchTempPatch {
 					p.getErrorStream()));
 
 			String line = null;
-
+			//reads text out put for forge server installer
 			while ((line = input.readLine()) != null) {
 
 				Main.print(line);
@@ -48,6 +50,7 @@ public class UglyLaunchTempPatch {
 			if (p.exitValue() != 0) {
 			}
 		} else {
+			//runs the client version of the forge installer.
 			Process p = Runtime.getRuntime().exec(
 					"java -jar " + "\"" + jarFile.getAbsolutePath() + "\" ");
 			p.waitFor();

@@ -22,8 +22,10 @@ import com.google.gson.JsonObject;
 
 public class getforgeid {
 	
+	//name of minecraft profile
 	public static final String MINECRAFT_LAUNCHER_PROFILES = "launcher_profiles.json";
 	
+	//reads json data to get forge profile and forge id to check if forge install is needed
 	public static String findForgeProfile() throws IOException {
         File configFile = getConfigFile();
 
@@ -42,8 +44,9 @@ public class getforgeid {
         return forge.getAsJsonPrimitive("lastVersionId").getAsString();
     }
 	
+	//gets profile.json file from .minecraft directory
 	private static File getConfigFile() throws IOException {
-        String minecraftInstall = GetApplicationPath.AppPath() + "/.minecraft/";
+        String minecraftInstall = GetApplicationPath.minecraftpath();
         if(!new File(minecraftInstall).exists()) {
             throw new IllegalStateException("Minecraft not found");
         }
@@ -56,6 +59,7 @@ public class getforgeid {
         return configFile;
     }
 	
+	//gets last run minecraft version (ask Isaac For more detailed explanation)
 	public static String findLastUsedMcVersion() throws IOException {
         File configFile = getConfigFile();
 

@@ -35,6 +35,7 @@ public class ModsDownload{
 	private static File _Mods17X;
 	private static int _i;
 
+	//gathers all download data and set up main loop for each file
 	public static void modsDownload(InstallInfo obj, File Mods17X,
 			Boolean ClientOnly) throws InterruptedException {
 
@@ -52,7 +53,8 @@ public class ModsDownload{
 
 		}
 	}
-
+	
+	//main download stuff including getting the url's and file paths runs each time a file needs downloading.
 	public static void download(int i, InstallInfo obj, File Mods17X)
 			throws Exception {
 		Main.print("Downloading: " + obj.mods().get(i).name());

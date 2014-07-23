@@ -19,6 +19,9 @@ import argo.saj.InvalidSyntaxException;
 import common.FileUtils;
 
 public class FileCreation {
+	
+	//code for creating required files
+	
 	public static void FileMake() throws IOException, InvalidSyntaxException {
 		File AppPath = GetApplicationPath.AppPath();
 		File PAQ164 = new File(AppPath.toString() + "/PAQ/Instances/PAQ");
@@ -26,6 +29,8 @@ public class FileCreation {
 		File Mods17X = new File(PAQ17X.toString() + "/mods");
 		File Config17X = new File(PAQ17X.toString() + "/config");
 
+		
+		//code for handling old PAQ installer (no longer relevant left in for reference till 1.8.X update)
 		if (PAQ164.exists()) {
 			PAQ164.renameTo(new File(AppPath.toString() + "/PAQ/OldPAQ1.6.4"));
 			JsonEditCodeOldPAQ.Main(AppPath.toString()
@@ -39,10 +44,12 @@ public class FileCreation {
 					+ "/PAQ/Instances"));
 		}
 
+		//checks if correct directory exists and creates it if not
 		if (!PAQ17X.exists()) {
 			PAQ17X.mkdir();
 		}
 
+		//checks if directory exists and either creates it if it does not or deletes and recreates it if not
 		if (!Mods17X.exists()) {
 			Mods17X.mkdir();
 		} else {
@@ -50,6 +57,7 @@ public class FileCreation {
 			Mods17X.mkdir();
 		}
 
+		//checks if directory exists and either creates it if it does not or deletes and recreates it if not
 		if (!Config17X.exists()) {
 			Config17X.mkdir();
 		} else {

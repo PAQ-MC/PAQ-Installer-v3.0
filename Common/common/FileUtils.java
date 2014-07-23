@@ -18,16 +18,20 @@ import net.lingala.zip4j.core.ZipFile;
 import net.lingala.zip4j.exception.ZipException;
 
 public class FileUtils {
+	
+	//creating folders
 	public static void folders(String FolderLocation) {
 		new File(FolderLocation).mkdir();
 	}
 
+	//getting current directory
 	public static String getCleanPath() {
 		String workingDir = System.getProperty("user.dir");
 
 		return workingDir;
 	}
 
+	//delateing a directory
 	public static void DelateDirectory(File directory) {
 
 		// make sure directory exists
@@ -49,7 +53,7 @@ public class FileUtils {
 		}
 
 	}
-
+	//file Delete
 	public static void delete(File file) throws IOException {
 
 		if (file.isDirectory()) {
@@ -83,7 +87,7 @@ public class FileUtils {
 			file.delete();
 		}
 	}
-
+	//unizp code useing Zipfile program
 	public static void unzip(String Zipfile, String Directry) {
 		ZipFile zipFile;
 		try {

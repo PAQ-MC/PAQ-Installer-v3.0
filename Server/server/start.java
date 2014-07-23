@@ -25,13 +25,21 @@ import common.StreamUtils;
 public class start {
 	public static void svstart(String mod, String version)
 			throws Exception {
-		Main.print("test server");
+		Main.print("server");
+		
+		//getting current directory of where the file is being run
 
 		File dir = new File(FileUtils.getCleanPath());
+		
+		//printing directory for refrence
 
 		Main.print(dir.toString());
+		
+		//getting install config file
 
 		InstallInfo obj = GetInstallInfo.JsonInfo();
+		
+		//creating mods and config folders in current directory
 
 		File Mods = new File(dir.toString() + "/mods");
 		File Config = new File(dir.toString() + "/config");
@@ -45,6 +53,8 @@ public class start {
 			FileUtils.DelateDirectory(Config);
 		}
 		Config.mkdirs();
+		
+		//downloading tmp config zip
 
 		FileCreation.FileMake();
 		File config = File.createTempFile("Config", ".zip");
@@ -53,11 +63,17 @@ public class start {
 			StreamUtils.saveTo(is, config);
 		}
 
+		//unziping config file to config folder
+		
 		FileUtils.unzip(config.toString(), Config.toString());
+		
+		//downloading mods to mods folder
 
 		ModsDownload.modsDownload(obj, Mods, true);
 		
 		Main.print("Installing Forge Stuff please Stand by");
+		
+		//checking for existing forge stuff and removing if it exists
 		
 		File libraies = new File(dir.toString() + "/libraries");
 		
@@ -77,6 +93,7 @@ public class start {
 			paqServer.delete();
 		}
 		
+		//downloading forge server zip and extracting to current directory
 		
 		File ServerZip = File.createTempFile("ServerZip", ".zip");
 		ServerZip.deleteOnExit();

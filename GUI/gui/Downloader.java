@@ -25,13 +25,15 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 import javax.swing.JProgressBar;
 
+import common.Main;
+
 public class Downloader implements Runnable {
 
 	public static String site;
 	public static File file;
 	public static boolean status;
 	private static JFrame frm;
-
+	//set up for downloader
 	public static void main(String _site, File _file)
 			throws InterruptedException {
 		site = _site;
@@ -44,9 +46,12 @@ public class Downloader implements Runnable {
 		while (status != true) {
 			System.out.print("");
 		}
+		Main.print("holding to not over load server");
+		Thread.sleep(1000);
 		frm.dispose();
+		
 	}
-
+	//Creates GUI for downloading and actviates background worker to download file
 	@Override
 	public void run() {
 		frm = new JFrame();
@@ -89,7 +94,7 @@ public class Downloader implements Runnable {
 	}
 
 }
-
+//private class for background worker to download files
 class Worker extends SwingWorker<Void, Void> {
 	private String site;
 	private File file;

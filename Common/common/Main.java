@@ -36,12 +36,16 @@ public class Main {
 	public static void main(String[] args) throws ClassNotFoundException,
 			NoSuchMethodException, InvocationTargetException,
 			IllegalAccessException, IOException, InterruptedException {
+		
+		//Setting up Log File
 
 		DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
 		Date date = new Date();
 		out = new PrintWriter(new FileWriter("PAQlog "
 				+ dateFormat.format(date) + ".txt"), true);
 
+		//reading argments
+		
 		OptionParser parser = new OptionParser("m::v::s::h");
 		OptionSet options = parser.parse(args);
 
@@ -58,6 +62,8 @@ public class Main {
 		}
 		server = options.has("s");
 
+		//help argment
+		
 		if (options.has("h")) {
 			System.out.println("Argement help");
 			System.out.println("--m = modpack location in fourm of url");
@@ -67,6 +73,8 @@ public class Main {
 			System.out.println("--h = this help menu");
 			exit(0);
 		}
+		
+		//checking if server argement is true
 
 		if (server == true) {
 			try {
@@ -90,17 +98,21 @@ public class Main {
 
 	}
 
+	
+	//main print class for use with logger
 	public static void print(String msg) {
 		System.out.println(msg);
 		out.println(msg);
 		out.flush();
 	}
 
+	//main exit class closes log file before exiting
 	public static void exit(int status) {
 		out.close();
 		System.exit(status);
 	}
-
+	
+	//message box pop up
 	public static void infoBox(String infoMessage, String location) {
 		JOptionPane.showMessageDialog(null, infoMessage,
 				"InfoBox: " + location, JOptionPane.INFORMATION_MESSAGE);
