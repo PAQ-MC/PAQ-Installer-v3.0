@@ -68,12 +68,6 @@
 			<classpath refid="PAQ-Installer-v3.0.classpath" />
 		</javac>
 	</target>
-	<target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects" />
-	<target name="Main (1)">
-		<java classname="common.Main" dir="../PAQ Installer Test Bed" failonerror="true" fork="yes">
-			<classpath refid="PAQ-Installer-v3.0.classpath" />
-		</java>
-	</target>
 	<manifestclasspath property="jar.classpath" jarfile="${jar.file}">
 		<classpath>
 			<fileset dir="Resorces" includes="*.jar" />
