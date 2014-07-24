@@ -86,7 +86,7 @@
 	<target depends="build" name="jar">
 		<jar destfile="jar/PAQ-Installer.jar" basedir="bin">
 			<manifest>
-				<attribute name="Main-Class" value="Main" />
+				<attribute name="Main-Class" value="Common/Main" />
 			</manifest>
 		</jar>
 	</target>
