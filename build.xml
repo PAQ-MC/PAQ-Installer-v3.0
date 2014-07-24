@@ -83,12 +83,17 @@
 		<property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter" />
 		<antcall target="build" />
 	</target>
+	<manifestclasspath property="jar.classpath" jarfile="${jar.file}">
+	    <classpath>
+	        <fileset dir="Resorces" includes="*.jar"/>
+	    </classpath>
+	</manifestclasspath>
 	<target depends="build" name="jar">
 		<jar destfile="jar/PAQ-Installer.jar" basedir="bin">
 			
 			<manifest>
 				<attribute name="Main-Class" value="common.Main" />
-				<attribute name="Class-Path" value="PAQ-Installer-v3.0.classpath" />
+				<attribute name="Class-Path" value="${jar.classpath}" />
 			</manifest>
 		</jar>
 	</target>
