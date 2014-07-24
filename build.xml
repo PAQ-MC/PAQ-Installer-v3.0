@@ -89,12 +89,17 @@
 	    </classpath>
 	</manifestclasspath>
 	<target depends="build" name="jar">
-		<jar destfile="jar/PAQ-Installer.jar" basedir="bin">
+		<property environment="env" />
+		<jar destfile="jar/PAQ-Installer" + ${env.BUILD_NUMBER} + ".jar" basedir="bin">
 			<zipgroupfileset dir="Resorces" />
 			<manifest>
 				<attribute name="Main-Class" value="common.Main" />
 				<attribute name="Class-Path" value="${jar.classpath}" />
 			</manifest>
 		</jar>
+	</target>
+	<target name="build-number">
+	    
+	    
 	</target>
 </project>
