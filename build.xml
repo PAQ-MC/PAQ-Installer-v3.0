@@ -97,8 +97,4 @@
 			</manifest>
 		</jar>
 	</target>
-	<target name="build-number">
-	    
-	    
-	</target>
 </project>
