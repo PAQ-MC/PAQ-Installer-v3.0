@@ -61,10 +61,10 @@ public class GetApplicationPath {
 			return AppPath;
 		} else if (isMac) {
 			String AppPath = System.getProperty("user.home")
-					+ "/Library/Application Support/minecraft"; // does not currently work on mac more testing needed
+					+ "/Library/Application Support/minecraft/";
 			return AppPath;
 		} else if (isLinux) {
-			String AppPath = System.getProperty("user.home") + "/.minecraft"; // is not well tested on yet
+			String AppPath = System.getProperty("user.home") + "/.minecraft/"; // is not well tested on yet
 			return AppPath;
 		} else {
 			Main.print("error os not known");
