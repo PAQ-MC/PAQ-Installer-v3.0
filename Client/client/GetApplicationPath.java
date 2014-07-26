@@ -64,7 +64,7 @@ public class GetApplicationPath {
 					+ "/Library/Application Support/minecraft/";
 			return AppPath;
 		} else if (isLinux) {
-			String AppPath = System.getProperty("user.home") + "/.minecraft/"; // is not well tested on yet
+			String AppPath = System.getProperty("user.home") + "/.minecraft/";
 			return AppPath;
 		} else {
 			Main.print("error os not known");
