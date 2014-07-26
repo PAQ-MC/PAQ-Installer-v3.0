@@ -57,7 +57,7 @@ public class start {
 				Main.exit(0);
 			}
 			if (getforgeid.findForgeProfile().contains(obj.forge().get(0).id())) {
-				Main.print("add msg later");
+				Main.print("Forge is already installed moving on to next step");
 			} else {
 				Forgeinstall.forge(false, obj.forge().get(0).installer());
 			}

@@ -52,7 +52,6 @@ public class getforgeid {
         }
 
         File configFile = new File(minecraftInstall +  MINECRAFT_LAUNCHER_PROFILES);
-        System.out.println(configFile);
         if(!configFile.exists()) {
             throw new IllegalStateException("Minecraft " + MINECRAFT_LAUNCHER_PROFILES + " not found");
         }
