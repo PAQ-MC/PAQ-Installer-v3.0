@@ -2,22 +2,19 @@
 This work is licensed under the Creative Commons
 Attribution-NonCommercial 3.0 Unported License.
 To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/3.0/.
-*/
+ */
 
 /***
-	Created By Isaac Wheeler
-*/
+ Created By Isaac Wheeler
+ */
 
 package server;
-
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
-
-
 
 import common.Main;
 import common.StreamUtils;
@@ -26,7 +23,7 @@ import Json.InstallInfo;
 public class ModsDownload {
 	public static void modsDownload(InstallInfo obj, File Mods17X,
 			Boolean ClientOnly) {
-		
+
 		for (int i = 0; i < (obj.mods().size()); i++) {
 
 			if ((ClientOnly != obj.mods().get(i).ClientOnly())) {
@@ -63,6 +60,7 @@ public class ModsDownload {
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
+					
 					if (modfile.length() != obj.mods().get(i).FileSize()) {
 
 						Main.print("Error File Size does not match for "
@@ -75,11 +73,10 @@ public class ModsDownload {
 						Main.print("File Size Good for "
 								+ obj.mods().get(i).name() + " Moveing on");
 
-						if (!ClientOnly) {
-						}
-
 					}
-
+					
+					
+					
 					if (cont == 5) {
 
 						System.out
@@ -91,6 +88,13 @@ public class ModsDownload {
 
 				} while ((modfile.length() != obj.mods().get(i).FileSize())
 						&& (cont != 5));
+			Main.print("Sleeping to not overload server");
+			try {
+				Thread.sleep(5000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			}
 			
 		}

@@ -56,9 +56,15 @@ public class start {
 						+ getforgeid.findLastUsedMcVersion());
 				Main.exit(0);
 			}
-			if (getforgeid.findForgeProfile().contains(obj.forge().get(0).id())) {
-				Main.print("Forge is already installed moving on to next step");
-			} else {
+			try {
+				if (getforgeid.findForgeProfile().contains(
+						obj.forge().get(0).id())) { // Possible profile find
+													// issue
+					Main.print("Forge is already installed moving on to next step");
+				} else {
+					Forgeinstall.forge(false, obj.forge().get(0).installer());
+				}
+			} catch (Exception e) {
 				Forgeinstall.forge(false, obj.forge().get(0).installer());
 			}
 

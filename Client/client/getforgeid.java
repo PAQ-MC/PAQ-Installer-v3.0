@@ -19,6 +19,7 @@ import java.io.InputStreamReader;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import common.Main;
 
 public class getforgeid {
 
@@ -49,14 +50,18 @@ public class getforgeid {
 	private static File getConfigFile() throws IOException {
 		String minecraftInstall = GetApplicationPath.minecraftpath();
 		if (!new File(minecraftInstall).exists()) {
-			throw new IllegalStateException("Minecraft not found");
+			Main.infoBox(
+					"Minecraft not found. please have run minecraft at least once",
+					"PAQ Installer Error");
+			Main.exit(1);
 		}
 
 		File configFile = new File(minecraftInstall
 				+ MINECRAFT_LAUNCHER_PROFILES);
 		if (!configFile.exists()) {
-			throw new IllegalStateException("Minecraft "
-					+ MINECRAFT_LAUNCHER_PROFILES + " not found");
+			Main.infoBox("Minecraft " + MINECRAFT_LAUNCHER_PROFILES
+					+ " not found", "PAQ Installer Error");
+			Main.exit(1);
 		}
 
 		return configFile;
