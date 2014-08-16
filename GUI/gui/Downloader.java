@@ -10,7 +10,6 @@ To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/
  with refrence to http://stackoverflow.com/questions/21954581/using-swing-gui-to-make-a-progress-bar-show-up-while-downloading-a-file
  */
 
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -82,8 +81,11 @@ public class Downloader implements Runnable {
 					try {
 						worker.get();
 					} catch (InterruptedException | ExecutionException e) {
-						// handle any errors here
-						e.printStackTrace();
+						Main.print(e.getMessage());
+						
+						Main.infoBox("There Was a Error with the download please report this on the PAQ Fourms, with the log file", null);
+						
+						
 					}
 				}
 

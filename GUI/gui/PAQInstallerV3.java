@@ -22,7 +22,6 @@ import javax.swing.JLabel;
 import javax.swing.JToggleButton;
 
 import client.start;
-import common.Main;
 
 import java.awt.Window.Type;
 

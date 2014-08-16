@@ -10,8 +10,6 @@ To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/
 
 package common;
 
-import gui.PAQInstallerV3;
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -43,6 +41,8 @@ public class Main {
 		Date date = new Date();
 		out = new PrintWriter(new FileWriter("PAQlog "
 				+ dateFormat.format(date) + ".txt"), true);
+		Main.print("Current System os is : " + System.getProperty("os.name").toLowerCase() ); 
+		
 
 		//reading argments
 		
@@ -55,7 +55,7 @@ public class Main {
 
 		if (options.has("m")) {
 			mod = (String) options.valueOf("m");
-			System.out.println((String) options.valueOf("m"));
+			print((String) options.valueOf("m"));
 		}
 		if (options.has("v")) {
 			version = (String) options.valueOf("v");
@@ -65,7 +65,7 @@ public class Main {
 		//help argment
 		
 		if (options.has("h")) {
-			System.out.println("Argement help");
+			print("Argement help");
 			System.out.println("--m = modpack location in fourm of url");
 			System.out
 					.println("--v = modpack version only for debuging don't use unless you know what your doing ");
