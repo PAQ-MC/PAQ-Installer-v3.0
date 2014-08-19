@@ -59,6 +59,7 @@ public class Main {
 		}
 		if (options.has("v")) {
 			version = (String) options.valueOf("v");
+			print((String) options.valueOf("v"));
 		}
 		server = options.has("s");
 
@@ -80,7 +81,7 @@ public class Main {
 			try {
 				_mod = mod;
 				_version = version;
-				start.svstart(mod, version);
+				start.svstart();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

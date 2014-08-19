@@ -23,7 +23,7 @@ import common.StreamUtils;
 
 
 public class start {
-	public static void svstart(String mod, String version)
+	public static void svstart()
 			throws Exception {
 		Main.print("server");
 		
