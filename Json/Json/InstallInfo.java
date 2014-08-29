@@ -14,6 +14,7 @@ import java.util.List;
 
 public class InstallInfo {
 	private String Config;
+	private String RequiaredVersion;
 	private List<forge> Forge;
 	private List<version> version;
 	private List<mods> mods;
@@ -22,7 +23,7 @@ public class InstallInfo {
 
 	@Override
 	public String toString() {
-		return "DataObject  " + version() + mods + "";
+		return "DataObject  " + RequiaredVersion + version() + mods + "";
 	}
 	
 	public List<version> version() {
@@ -39,5 +40,9 @@ public class InstallInfo {
 
 	public List<forge> forge(){
 		return Forge;
+	}
+	
+	public String McVersion(){
+		return RequiaredVersion;
 	}
 }
