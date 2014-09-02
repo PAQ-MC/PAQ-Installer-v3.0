@@ -32,11 +32,13 @@ public class Downloader implements Runnable {
 	public static File file;
 	public static boolean status;
 	private static JFrame frm;
+	private static JProgressBar current;
 	//set up for downloader
 	public static void main(String _site, File _file)
 			throws InterruptedException {
 		site = _site;
 		file = _file;
+		guiBuilder();
 		Thread t = new Thread(new Downloader());
 		t.start();
 		t.join();
@@ -50,27 +52,12 @@ public class Downloader implements Runnable {
 		frm.dispose();
 		
 	}
+	
 	//Creates GUI for downloading and actviates background worker to download file
 	@Override
 	public void run() {
-		frm = new JFrame();
-		JLabel textLabel;
-		final JProgressBar current = new JProgressBar(0, 100);
-		current.setSize(300, 100);
-		current.setValue(0);
-		current.setStringPainted(true);
-		if(file.getName().length() > 20){
-			textLabel = new JLabel("Downloading: " + file.getName().subSequence(0, 20) + "..." ,SwingConstants.CENTER); 
-		} else {
-			textLabel = new JLabel("Downloading: " + file.getName() ,SwingConstants.CENTER);
-		}
-		frm.add(current);
-		frm.add(textLabel);
-		frm.setVisible(true);
-		frm.setLayout(new FlowLayout());
-		frm.setSize(300, 100);
-		frm.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		final Worker worker = new Worker(site, file);
+		
 		worker.addPropertyChangeListener(new PropertyChangeListener() {
 
 			@Override
@@ -95,6 +82,26 @@ public class Downloader implements Runnable {
 		
 	}
 
+	public static void guiBuilder(){
+		frm = new JFrame();
+		JLabel textLabel;
+		current = new JProgressBar(0, 100);
+		current.setSize(300, 100);
+		current.setValue(0);
+		current.setStringPainted(true);
+		if(file.getName().length() > 20){
+			textLabel = new JLabel("Downloading: " + file.getName().subSequence(0, 20) + "..." ,SwingConstants.CENTER); 
+		} else {
+			textLabel = new JLabel("Downloading: " + file.getName() ,SwingConstants.CENTER);
+		}
+		frm.add(current);
+		frm.add(textLabel);
+		frm.setVisible(true);
+		frm.setLayout(new FlowLayout());
+		frm.setSize(300, 100);
+		frm.setDefaultCloseOperation(EXIT_ON_CLOSE);
+	}
+	
 }
 //private class for background worker to download files
 class Worker extends SwingWorker<Void, Void> {
