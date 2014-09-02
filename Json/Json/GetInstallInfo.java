@@ -42,8 +42,6 @@ public class GetInstallInfo {
 
 		InstallInfo obj = gson.fromJson(br2, InstallInfo.class);
 
-		System.out.println(obj.toString());
-		
 		return obj;
 
 	}

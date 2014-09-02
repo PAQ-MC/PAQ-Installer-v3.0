@@ -42,8 +42,9 @@ public class start {
 		}
 
 		try {
-			String McVersion = obj.McVersion();
-			if (!getforgeid.findLastUsedMcVersion().contains(McVersion)) {
+			String McVersion = obj.forge().get(0).id();
+			McVersion = McVersion.substring(0, 5); // TODO: find better method
+			if (!getforgeid.findLastUsedMcVersion().contentEquals(McVersion)) {
 				Main.infoBox("Please Run: " + McVersion
 						+ " At least once, You Currently Have selected: "
 						+ getforgeid.findLastUsedMcVersion()

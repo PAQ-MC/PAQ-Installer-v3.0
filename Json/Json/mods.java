@@ -12,7 +12,7 @@ package Json;
 
 public class mods {
 
-	private String FileName;
+	private String name;
 	private String link;
 	private int id;
 	private boolean adfly;
@@ -21,12 +21,12 @@ public class mods {
 
 	@Override
 	public String toString() {
-		return "FileName= " + FileName + " link= " + link + " id= " + id + " adfly= "
+		return "name= " + name + " link= " + link + " id= " + id + " adfly= "
 				+ adfly;
 	}
 	
-	public String name(){ //TODO:Update Rest of code for FileName 
-		return FileName;
+	public String name(){
+		return name;
 	}
 	
 	public String link() {

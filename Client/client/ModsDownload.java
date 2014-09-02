@@ -97,7 +97,7 @@ public class ModsDownload{
 			} else {
 
 				Main.print("File Size Good for "
-						+ obj.mods().get(i).name() + " Moving on");
+						+ obj.mods().get(i).name() + " Moveing on");
 
 			}
 
