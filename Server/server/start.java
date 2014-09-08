@@ -56,7 +56,7 @@ public class start {
 		
 		//downloading tmp config zip
 
-		FileCreation.FileMake();
+		
 		File config = File.createTempFile("Config", ".zip");
 		config.deleteOnExit();
 		try (InputStream is = new URL(obj.Config()).openStream()) {

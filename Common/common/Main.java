@@ -24,47 +24,64 @@ import joptsimple.OptionParser;
 import joptsimple.OptionSet;
 import server.start;
 
+/**
+ * Main Start Class handles functions used thru out program + start point for
+ * whole program
+ * 
+ * @author Isaac
+ * 
+ */
 public class Main {
 
-	public static String _mod;
-	public static String _version;
+	// String for location of installer info
+	public static String mod;
+	// String to decide which version to use
+	public static String version;
+	// String to decide instance name
+	public static String instanceName;
 
 	static PrintWriter out;
 
 	public static void main(String[] args) throws ClassNotFoundException,
 			NoSuchMethodException, InvocationTargetException,
 			IllegalAccessException, IOException, InterruptedException {
-		
-		//Setting up Log File
+
+		// Setting up Log File
 
 		DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
 		Date date = new Date();
 		out = new PrintWriter(new FileWriter("PAQlog "
 				+ dateFormat.format(date) + ".txt"), true);
-		Main.print("Current System os is : " + System.getProperty("os.name").toLowerCase() ); 
-		
+		Main.print("Current System os is : "
+				+ System.getProperty("os.name").toLowerCase());
 
-		//reading argments
-		
-		OptionParser parser = new OptionParser("m::v::s::h");
+		// reading argments
+
+		OptionParser parser = new OptionParser("m::v::s::h::i");
 		OptionSet options = parser.parse(args);
 
-		String mod = null;
-		String version = null;
-		boolean server = false;
 
 		if (options.has("m")) {
 			mod = (String) options.valueOf("m");
 			print((String) options.valueOf("m"));
+		} else{
+			mod = "http://mage-tech.org/PAQ/versioninfo.json";
+			print(mod);
 		}
 		if (options.has("v")) {
 			version = (String) options.valueOf("v");
 			print((String) options.valueOf("v"));
 		}
-		server = options.has("s");
+		if (options.has("i")) {
+			instanceName = (String) options.valueOf("i");
+			print((String) options.valueOf("i"));
+		} else {
+			instanceName = "PAQ";
+		}
+		boolean server = options.has("s");
 
-		//help argment
-		
+		// help argment
+
 		if (options.has("h")) {
 			print("Argement help");
 			System.out.println("--m = modpack location in fourm of url");
@@ -74,24 +91,21 @@ public class Main {
 			System.out.println("--h = this help menu");
 			exit(0);
 		}
-		
-		//checking if server argement is true
+
+		// checking if server argement is true
 
 		if (server == true) {
 			try {
-				_mod = mod;
-				_version = version;
 				start.svstart();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		} else {
 			try {
-				_mod = mod;
-				_version = version;
-				infoBox("Starting PAQ Client Install please close this box to start","start message");
+				infoBox("Starting PAQ Client Install please close this box to start",
+						"start message");
 				client.start.cstart();
-				//PAQInstallerV3.main();
+				// PAQInstallerV3.main();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -99,21 +113,20 @@ public class Main {
 
 	}
 
-	
-	//main print class for use with logger
+	// main print class for use with logger
 	public static void print(String msg) {
 		System.out.println(msg);
 		out.println(msg);
 		out.flush();
 	}
 
-	//main exit class closes log file before exiting
+	// main exit class closes log file before exiting
 	public static void exit(int status) {
 		out.close();
 		System.exit(status);
 	}
-	
-	//message box pop up
+
+	// message box pop up
 	public static void infoBox(String infoMessage, String location) {
 		JOptionPane.showMessageDialog(null, infoMessage,
 				"InfoBox: " + location, JOptionPane.INFORMATION_MESSAGE);

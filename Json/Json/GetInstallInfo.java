@@ -19,15 +19,13 @@ import common.Main;
 
 public class GetInstallInfo {
 	public static InstallInfo JsonInfo() throws Exception {
-		String version = Main._version;
+		String version = Main.version;
 		Gson gson = new Gson();
 		BufferedReader br;
-		if (Main._mod != null) {
 
-			br = read(Main._mod);
-		} else {
-			br = read("http://mage-tech.org/PAQ/versioninfo.json");
-		}
+		System.out.println(Main.mod);
+		
+		br = read(Main.mod);
 
 		Versioninfo Versioninfo = gson.fromJson(br, Versioninfo.class);
 

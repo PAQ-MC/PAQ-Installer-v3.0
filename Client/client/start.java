@@ -71,12 +71,12 @@ public class start {
 		}
 
 		File AppPath = GetApplicationPath.AppPath();
-		File PAQ17X = new File(AppPath.toString() + "/PAQ/PAQ1.7.X");
-		File Mods17X = new File(PAQ17X.toString() + "/mods");
-		File Config17X = new File(PAQ17X.toString() + "/config");
+		File PAQ = new File(AppPath.toString() + "/PAQ/" + Main.instanceName);
+		File Mods = new File(PAQ.toString() + "/mods");
+		File Config = new File(PAQ.toString() + "/config");
 
 		try {
-			FileCreation.FileMake();
+			FileCreation.FileMake(PAQ, Mods, Config);
 		} catch (IOException | InvalidSyntaxException e) {
 
 			e.printStackTrace();
@@ -99,7 +99,7 @@ public class start {
 			e.printStackTrace();
 		}
 
-		FileUtils.unzip(config.toString(), Config17X.toString());
+		FileUtils.unzip(config.toString(), Config.toString());
 
 		// JOptionPane.showMessageDialog(PAQInstallerV3.window.frame,
 		// "About to install mods, the twitching box is to indicate status of download");
@@ -107,11 +107,11 @@ public class start {
 				.showMessageDialog(null,
 						"About to install mods, the twitching box is to indicate status of download");
 
-		ModsDownload.modsDownload(obj, Mods17X, true);
+		ModsDownload.modsDownload(obj, Mods, true);
 
 		try {
 			JsonEditCode.Main(AppPath.toString() + "/.minecraft",
-					PAQ17X.toString(), obj.forge().get(0).id());
+					PAQ.toString(), obj.forge().get(0).id());
 		} catch (IOException | InvalidSyntaxException e) {
 			e.printStackTrace();
 		}
