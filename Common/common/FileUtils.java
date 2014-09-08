@@ -4,10 +4,6 @@ Attribution-NonCommercial 3.0 Unported License.
 To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/3.0/.
 */
 
-/***
-	Created By Isaac Wheeler
-*/
-
 
 package common;
 
@@ -17,21 +13,35 @@ import java.io.IOException;
 import net.lingala.zip4j.core.ZipFile;
 import net.lingala.zip4j.exception.ZipException;
 
+/**
+ * File utility class for handling diffrent types of file tasks
+ * @author IsaacWheeler
+ *
+ */
 public class FileUtils {
 	
-	//creating folders
+	/**
+	 * used to create folders
+	 * @param FolderLocation the location and name of the file you want in the format ".../name"
+	 */
 	public static void folders(String FolderLocation) {
 		new File(FolderLocation).mkdir();
 	}
 
-	//getting current directory
+	/**
+	 * get the current directory location that the program is running in 
+	 * @return String that tells the current location that the program is running in
+	 */
 	public static String getCleanPath() {
 		String workingDir = System.getProperty("user.dir");
 
 		return workingDir;
 	}
 
-	//delateing a directory
+	/**
+	 * used to recursive delete a directory 
+	 * @param directory the directory you want deleted
+	 */
 	public static void DelateDirectory(File directory) {
 
 		// make sure directory exists
@@ -53,7 +63,13 @@ public class FileUtils {
 		}
 
 	}
-	//file Delete
+	
+	
+	/**
+	 * used to delete a file
+	 * @param file file that you want deleted
+	 * @throws IOException thrown if file is missing or does not exist
+	 */
 	public static void delete(File file) throws IOException {
 
 		if (file.isDirectory()) {
@@ -87,14 +103,18 @@ public class FileUtils {
 			file.delete();
 		}
 	}
-	//unizp code useing Zipfile program
+	
+	/**
+	 * unzip code useing Zipfile resource 
+	 * @param Zipfile the file that you want unziped
+	 * @param Directry where you want it unizipped to
+	 */
 	public static void unzip(String Zipfile, String Directry) {
 		ZipFile zipFile;
 		try {
 			zipFile = new ZipFile(Zipfile);
 			zipFile.extractAll(Directry);
 		} catch (ZipException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

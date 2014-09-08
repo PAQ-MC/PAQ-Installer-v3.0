@@ -4,11 +4,6 @@ Attribution-NonCommercial 3.0 Unported License.
 To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/3.0/.
 */
 
-/***
-	Created By Isaac Wheeler
-*/
-
-
 package common;
 
 import java.io.BufferedReader;
@@ -16,10 +11,24 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.InvocationTargetException;
-
+/**
+ * code for lunching external jar file 
+ * @author IsaacWheeler
+ *
+ */
 public class UglyLaunchTempPatch {
 
-	//code for lunching extranial jar file 
+	/**
+	 * code for lunching external jar file 
+	 * @param jarFile the jar file that is being lunched
+	 * @param Server is this a server lunch or not
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 * @throws NoSuchMethodException
+	 * @throws InvocationTargetException
+	 * @throws IllegalAccessException
+	 * @throws InterruptedException
+	 */
 	public static void jar(File jarFile, Boolean Server) throws IOException,
 			ClassNotFoundException, NoSuchMethodException,
 			InvocationTargetException, IllegalAccessException,

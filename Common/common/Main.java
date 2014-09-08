@@ -4,10 +4,6 @@ Attribution-NonCommercial 3.0 Unported License.
 To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/3.0/.
  */
 
-/***
- Created By Isaac Wheeler
- */
-
 package common;
 
 import java.io.FileWriter;
@@ -113,20 +109,30 @@ public class Main {
 
 	}
 
-	// main print class for use with logger
+	/**
+	 *  main print class for use with logger
+	 * @param msg the message you want printed
+	 */
 	public static void print(String msg) {
 		System.out.println(msg);
 		out.println(msg);
 		out.flush();
 	}
 
-	// main exit class closes log file before exiting
+	/**
+	 * main exit class closes log file before exiting
+	 * @param status if program is exiting with error or not 
+	 */
 	public static void exit(int status) {
 		out.close();
 		System.exit(status);
 	}
 
-	// message box pop up
+	/**
+	 * message box pop up
+	 * @param infoMessage message that you want shown
+	 * @param location location that it is called from (not used often)
+	 */
 	public static void infoBox(String infoMessage, String location) {
 		JOptionPane.showMessageDialog(null, infoMessage,
 				"InfoBox: " + location, JOptionPane.INFORMATION_MESSAGE);
