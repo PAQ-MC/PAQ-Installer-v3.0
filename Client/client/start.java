@@ -3,11 +3,6 @@ This work is licensed under the Creative Commons
 Attribution-NonCommercial 3.0 Unported License.
 To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/3.0/.
  */
-
-/***
- Created By Isaac Wheeler
- */
-
 package client;
 
 import java.io.File;
@@ -27,8 +22,17 @@ import common.Forgeinstall;
 import common.Main;
 import common.StreamUtils;
 
+/**
+ * main code for client install
+ * @author IsaacWheeler
+ *
+ */
 public class start {
 
+	/**
+	 * main function for all client side code, for installing mod pack
+	 * @throws InterruptedException
+	 */
 	public static void cstart() throws InterruptedException {
 		Main.print("Install Button Clicked");
 		Main.print("Begining Install");
@@ -107,7 +111,7 @@ public class start {
 				.showMessageDialog(null,
 						"About to install mods, the twitching box is to indicate status of download");
 
-		ModsDownload.modsDownload(obj, Mods, true);
+		ModsDownload.modsDownload(obj, Mods);
 
 		try {
 			JsonEditCode.Main(AppPath.toString() + "/.minecraft",

@@ -3,11 +3,6 @@ This work is licensed under the Creative Commons
 Attribution-NonCommercial 3.0 Unported License.
 To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/3.0/.
 */
-
-/***
-	Created By Isaac Wheeler
-*/
-
 package server;
 
 import java.io.File;
@@ -21,8 +16,16 @@ import common.FileUtils;
 import common.Main;
 import common.StreamUtils;
 
-
+/**
+ * Class file for server side install code
+ * @author IsaacWheeler
+ *
+ */
 public class start {
+	/**
+	 * main function for server side install
+	 * @throws Exception
+	 */
 	public static void svstart()
 			throws Exception {
 		Main.print("server");

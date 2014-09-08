@@ -3,20 +3,22 @@ This work is licensed under the Creative Commons
 Attribution-NonCommercial 3.0 Unported License.
 To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/3.0/.
  */
-
-/***
- Created By Isaac Wheeler
- */
-
 package client;
 
 import java.io.File;
 
 import common.Main;
-
+/**
+ * Class File for getting different Application directory's on different systems
+ * @author IsaacWheeler
+ *
+ */
 public class GetApplicationPath {
 
-	// code for getting os dependent file paths
+	/**
+	 * code for getting os dependent file paths
+	 * @return the file for the location of the Application Directory
+	 */
 	public static File AppPath() {
 		String os = System.getProperty("os.name").toLowerCase();
 		boolean isWindows, isMac, isLinux;
@@ -48,6 +50,10 @@ public class GetApplicationPath {
 		}
 	}
 
+	/**
+	 * Gets the Minecraft directory on different Systems 
+	 * @return the String representing the file location of the minecraft directory
+	 */
 	public static String minecraftpath() {
 		String os = System.getProperty("os.name").toLowerCase();
 		boolean isWindows, isMac, isLinux;

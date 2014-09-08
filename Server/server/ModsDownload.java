@@ -3,11 +3,6 @@ This work is licensed under the Creative Commons
 Attribution-NonCommercial 3.0 Unported License.
 To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/3.0/.
  */
-
-/***
- Created By Isaac Wheeler
- */
-
 package server;
 
 import java.io.File;
@@ -19,8 +14,19 @@ import java.net.URL;
 import common.Main;
 import common.StreamUtils;
 import Json.InstallInfo;
-
+/**
+ * Server side mods download
+ * @author IsaacWheeler
+ *
+ */
 public class ModsDownload {
+	
+	/**
+	 * main download class for downloading mods
+	 * @param obj install info obj
+	 * @param Mods17X mods directory 
+	 * @param ClientOnly is this a client only mod
+	 */
 	public static void modsDownload(InstallInfo obj, File Mods17X,
 			Boolean ClientOnly) {
 

@@ -2,15 +2,8 @@
 This work is licensed under the Creative Commons
 Attribution-NonCommercial 3.0 Unported License.
 To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/3.0/.
-*/
-
-/*
-	Created By Isaac Wheeler
-*/
-
+ */
 package client;
-
-
 
 import gui.Downloader;
 
@@ -19,25 +12,32 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-
-
-
-
-
-
-
 import common.Main;
 import Json.InstallInfo;
 
-public class ModsDownload{
+/**
+ * Class File for handling mod downloading
+ * 
+ * @author IsaacWheeler
+ * 
+ */
+public class ModsDownload {
 
+	// install info obj
 	private static InstallInfo _obj;
+	// mods directory location
 	private static File _Mods17X;
+	// Iteration number
 	private static int _i;
 
-	//gathers all download data and set up main loop for each file
-	public static void modsDownload(InstallInfo obj, File Mods17X,
-			Boolean ClientOnly) throws InterruptedException {
+	/**
+	 * gathers all download data and set up main loop for each file
+	 * @param obj install info obj
+	 * @param Mods17X mods directory location
+	 * @throws InterruptedException
+	 */
+	public static void modsDownload(InstallInfo obj, File Mods17X)
+			throws InterruptedException {
 
 		for (int i = 0; i < (obj.mods().size()); i++) {
 
@@ -53,8 +53,15 @@ public class ModsDownload{
 
 		}
 	}
-	
-	//main download stuff including getting the url's and file paths runs each time a file needs downloading.
+
+
+	/**
+	 * main download stuff including getting the url's and file paths runs each time a file needs downloading.
+	 * @param i iteration number
+	 * @param obj install info obj
+	 * @param Mods17X mods directory location
+	 * @throws Exception
+	 */
 	public static void download(int i, InstallInfo obj, File Mods17X)
 			throws Exception {
 		Main.print("Downloading: " + obj.mods().get(i).name());
@@ -63,7 +70,6 @@ public class ModsDownload{
 		try {
 			modUrl = new URL(obj.mods().get(i).link());
 		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -83,10 +89,9 @@ public class ModsDownload{
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-					
-						 
+
 			Downloader.main(modUrl.toString(), new File(modfile.toString()));
-			
+
 			if (modfile.length() != obj.mods().get(i).FileSize()) {
 
 				Main.print("Error File Size does not match for "
@@ -96,8 +101,8 @@ public class ModsDownload{
 
 			} else {
 
-				Main.print("File Size Good for "
-						+ obj.mods().get(i).name() + " Moving on");
+				Main.print("File Size Good for " + obj.mods().get(i).name()
+						+ " Moving on");
 
 			}
 
