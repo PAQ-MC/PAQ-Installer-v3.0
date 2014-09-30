@@ -3,11 +3,6 @@ This work is licensed under the Creative Commons
 Attribution-NonCommercial 3.0 Unported License.
 To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/3.0/.
 */
-
-/***
-	Created By Isaac Wheeler
-*/
-
 package Json;
 
 import java.io.BufferedWriter;
@@ -30,9 +25,22 @@ import argo.saj.InvalidSyntaxException;
 
 import common.Main;
 
-
+/**
+ * class for editing the minecraft launcher profile
+ * @author IsaacWheeler
+ *
+ */
 public class JsonEditCode {
-
+	
+	
+	/**
+	 * 
+	 * @param jsonlocation
+	 * @param gameDir
+	 * @param forgeid
+	 * @throws IOException
+	 * @throws InvalidSyntaxException
+	 */
     public static void Main(String jsonlocation, String gameDir, String forgeid) throws IOException, InvalidSyntaxException
     {
         

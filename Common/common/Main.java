@@ -35,7 +35,7 @@ public class Main {
 	public static String version;
 	// String to decide instance name
 	public static String instanceName;
-
+	// log file printer
 	static PrintWriter out;
 
 	public static void main(String[] args) throws ClassNotFoundException,

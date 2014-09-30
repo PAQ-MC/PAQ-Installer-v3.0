@@ -44,11 +44,14 @@ public class Downloader implements Runnable {
 		t.join();
 		
 		
-		while (status != true) {
-			System.out.print("");
-		}
+		/*while (status != true) {
+			Thread.sleep(100);
+		}*/
+		
 		Main.print("holding to not over load server");
+		
 		Thread.sleep(5000);
+		
 		frm.dispose();
 		
 	}
@@ -141,5 +144,6 @@ class Worker extends SwingWorker<Void, Void> {
 	@Override
 	public void done() {
 		Downloader.status = true;
+		//this.notifyAll();
 	}
 }
