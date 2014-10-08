@@ -5,7 +5,7 @@ To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/
  */
 package client;
 
-import gui.Downloader;
+import gui.downloaderBackup;
 
 import java.io.File;
 import java.io.IOException;
@@ -90,7 +90,7 @@ public class ModsDownload {
 				e.printStackTrace();
 			}
 
-			Downloader.main(modUrl.toString(), new File(modfile.toString()));
+			downloaderBackup.download(modUrl.toString(), new File(modfile.toString()));
 
 			if (modfile.length() != obj.mods().get(i).FileSize()) {
 

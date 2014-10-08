@@ -12,5 +12,7 @@
 	<classpathentry kind="lib" path="/Users/IsaacWheeler/PAQ-Installer-v3.0/Resorces/jcl-core-2.5.jar"/>
 	<classpathentry kind="lib" path="/Users/IsaacWheeler/PAQ-Installer-v3.0/Resorces/jopt-simple-4.6.jar"/>
 	<classpathentry kind="lib" path="/Users/IsaacWheeler/PAQ-Installer-v3.0/Resorces/zip4j_1.3.2.jar"/>
+	<classpathentry kind="lib" path="/Users/IsaacWheeler/PAQ-Installer-v3.0/Resorces/forms-1.3.0-src.zip"/>
+	<classpathentry kind="lib" path="/Users/IsaacWheeler/PAQ-Installer-v3.0/Resorces/forms-1.3.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

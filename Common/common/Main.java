@@ -6,6 +6,9 @@ To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/
 
 package common;
 
+import gui.PAQInstallerV3;
+
+import java.awt.EventQueue;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -41,6 +44,8 @@ public class Main {
 	public static void main(String[] args) throws ClassNotFoundException,
 			NoSuchMethodException, InvocationTargetException,
 			IllegalAccessException, IOException, InterruptedException {
+		
+		
 
 		// Setting up Log File
 
@@ -98,10 +103,16 @@ public class Main {
 			}
 		} else {
 			try {
-				infoBox("Starting PAQ Client Install please close this box to start",
-						"start message");
-				client.start.cstart();
-				// PAQInstallerV3.main();
+				
+				PAQInstallerV3.display();
+				
+				/**
+				 * left in for ....
+				 *
+				 * infoBox("Starting PAQ Client Install please close this box to start",
+				 *	"start message");
+				 *client.start.cstart();
+				 */
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
