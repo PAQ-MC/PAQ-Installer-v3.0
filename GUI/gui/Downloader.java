@@ -26,6 +26,11 @@ import javax.swing.JProgressBar;
 
 import common.Main;
 
+/**
+ * @deprecated no longer used left for possible fixing later on
+ * @author Isaac Wheeler
+ *
+ */
 public class Downloader implements Runnable {
 
 	public static String site;

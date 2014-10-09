@@ -7,6 +7,7 @@ To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/
 package common;
 
 import gui.Downloader;
+import gui.downloaderBackup;
 
 import java.io.File;
 import java.io.IOException;
@@ -60,11 +61,8 @@ public class Forgeinstall {
 		File tmp = File.createTempFile("forge", ".jar");
 		tmp.deleteOnExit();
 
-		try {
-			Downloader.main(forgeUrl, tmp);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+			downloaderBackup download = new downloaderBackup(forgeUrl, tmp);
+			download.downloader();
 
 		Main.print("Starting Forge installer");
 		UglyLaunchTempPatch.jar(tmp, isServer);

@@ -1,5 +1,7 @@
-/**
- * 
+/*
+This work is licensed under the Creative Commons
+Attribution-NonCommercial 3.0 Unported License.
+To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/3.0/.
  */
 package gui;
 
@@ -16,56 +18,86 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import java.awt.Window.Type;
 
 /**
+ * used for dowloading client side mods and other files
  * 
  * @author IsaacWheeler
  * 
  */
 public class downloaderBackup {
-	private static JFrame frm;
-	private static  File file;
+	// the gui frame
+	private JFrame frm;
+	// the file path for the file being dowloaded
+	private File file;
+	// status image aray
 	private static ImageIcon[] img;
-	private static JLabel loadingImage;
-	private static JLabel loadingStatus;
+	// graffic for the user to watch
+	private JLabel loadingImage;
+	// the site the file is being downloaded from
+	private String site;
 
-	public static void download(String site, File _file) throws IOException{
+	private JLabel textLabel;
+
+	/**
+	 * sets up and starts the file download
+	 * 
+	 * @param _site
+	 *            the web location of the file being downloaded
+	 * @param _file
+	 *            the file path of the file being downloaded
+	 * @throws IOException
+	 */
+	public downloaderBackup(String _site, File _file) throws IOException {
+		// making it visable to the whole class
 		file = _file;
-		
+		site = _site;
+		// loading the loading images
 		loadimages();
+		// displaying the gui
 		guiBuilder();
-		
-		downloader(site);
-		
-		frm.dispose();
-	}
-	
-	
-	public static void guiBuilder() {
-		
-		frm = new JFrame();
-		JLabel textLabel;
-		if (file.getName().length() > 20) {
-			textLabel = new JLabel("Downloading: "
-					+ file.getName().subSequence(0, 20) + "...",
-					SwingConstants.CENTER);
-		} else {
-			textLabel = new JLabel("Downloading: " + file.getName(),
-					SwingConstants.CENTER);
-		}
-		frm.add(textLabel);
-		loadingImage = new JLabel("", SwingConstants.CENTER);
-		loadingImage.setIcon(img[0]);
-		frm.add(loadingImage);
-		loadingStatus = new JLabel("Downloaded: 0%", SwingConstants.CENTER);
-		frm.add(loadingStatus);
-		frm.setVisible(true);
-		frm.setLayout(new FlowLayout());
-		frm.setSize(300, 150);
-		frm.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		//sets the file name
+		setFileName();
 	}
 
-	private static void downloader(String site) throws IOException {
+	/**
+	 * sets up and displays the gui
+	 */
+	private void guiBuilder() {
+
+		frm = new JFrame();
+		frm.setType(Type.POPUP);
+		frm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		textLabel = new JLabel("Downloading: error getting file name", SwingConstants.CENTER);
+		frm.getContentPane().add(textLabel);
+		loadingImage = new JLabel("Downloaded: 0%", SwingConstants.CENTER);
+		loadingImage.setIcon(img[0]);
+		frm.getContentPane().add(loadingImage);
+		frm.setVisible(true);
+		frm.getContentPane().setLayout(new FlowLayout());
+		frm.setSize(300, 150);
+	}
+	
+	/**
+	 * sets the file name for the file label
+	 */
+	private void setFileName(){
+		if (file.getName().length() > 20) {
+			textLabel.setText("Downloading: "
+					+ file.getName().subSequence(0, 20) + "...");
+		} else {
+			textLabel.setText("Downloading: " + file.getName());
+		}
+	}
+
+	/**
+	 * dowloads the file
+	 * 
+	 * @throws IOException
+	 *             handled else where
+	 */
+	public void downloader() throws IOException {
 		URL url = new URL(site);
 
 		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -83,26 +115,28 @@ public class downloaderBackup {
 				while ((i = in.read(data, 0, 1024)) >= 0) {
 					totalDataRead = totalDataRead + i;
 					bout.write(data, 0, i);
-					
-					
-					if(j <= 30 ){
+
+					if (j <= 30) {
 						loadingImage.setIcon(img[j]);
 						j++;
-					}else{
+					} else {
 						loadingImage.setIcon(img[0]);
 						j = 1;
 					}
-					
-					
+
 					int percent = Math.abs((totalDataRead * 100) / filesize);
-					loadingStatus.setText("Downloaded: " + percent + "%");
-					
+					loadingImage.setText("Downloaded: " + percent + "%");
+
 				}
+				frm.dispose();
 			}
 		}
 
 	}
 
+	/**
+	 * leads the images for the loading gif to an aray
+	 */
 	private static void loadimages() {
 		ImageIcon[] imgtmp = {
 				new ImageIcon(

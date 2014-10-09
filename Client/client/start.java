@@ -105,14 +105,12 @@ public class start {
 
 		FileUtils.unzip(config.toString(), Config.toString());
 
-		// JOptionPane.showMessageDialog(PAQInstallerV3.window.frame,
-		// "About to install mods, the twitching box is to indicate status of download");
 		JOptionPane
 				.showMessageDialog(null,
 						"About to install mods, the twitching box is to indicate status of download");
 
 		ModsDownload.modsDownload(obj, Mods);
-
+		
 		try {
 			JsonEditCode.Main(AppPath.toString() + "/.minecraft",
 					PAQ.toString(), obj.forge().get(0).id());
@@ -132,6 +130,7 @@ public class start {
 		}
 
 		Main.exit(0);
+		
 	}
 
 }

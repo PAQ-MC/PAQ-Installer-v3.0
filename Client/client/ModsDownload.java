@@ -32,8 +32,11 @@ public class ModsDownload {
 
 	/**
 	 * gathers all download data and set up main loop for each file
-	 * @param obj install info obj
-	 * @param Mods17X mods directory location
+	 * 
+	 * @param obj
+	 *            install info obj
+	 * @param Mods17X
+	 *            mods directory location
 	 * @throws InterruptedException
 	 */
 	public static void modsDownload(InstallInfo obj, File Mods17X)
@@ -54,12 +57,16 @@ public class ModsDownload {
 		}
 	}
 
-
 	/**
-	 * main download stuff including getting the url's and file paths runs each time a file needs downloading.
-	 * @param i iteration number
-	 * @param obj install info obj
-	 * @param Mods17X mods directory location
+	 * main download stuff including getting the url's and file paths runs each
+	 * time a file needs downloading.
+	 * 
+	 * @param i
+	 *            iteration number
+	 * @param obj
+	 *            install info obj
+	 * @param Mods17X
+	 *            mods directory location
 	 * @throws Exception
 	 */
 	public static void download(int i, InstallInfo obj, File Mods17X)
@@ -90,7 +97,9 @@ public class ModsDownload {
 				e.printStackTrace();
 			}
 
-			downloaderBackup.download(modUrl.toString(), new File(modfile.toString()));
+			downloaderBackup download = new downloaderBackup(modUrl.toString(),
+					new File(modfile.toString()));
+			download.downloader();
 
 			if (modfile.length() != obj.mods().get(i).FileSize()) {
 
@@ -118,5 +127,4 @@ public class ModsDownload {
 		} while ((modfile.length() != obj.mods().get(i).FileSize())
 				&& (cont != 6));
 	}
-
 }
