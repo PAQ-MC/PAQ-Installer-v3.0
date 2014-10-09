@@ -41,18 +41,26 @@ public class Main {
 	// log file printer
 	static PrintWriter out;
 
-	public static void main(String[] args) throws ClassNotFoundException,
-			NoSuchMethodException, InvocationTargetException,
-			IllegalAccessException, IOException, InterruptedException {
-		
-		
+	/**
+	 * Start Of the program
+	 * 
+	 * @param args
+	 *            parameters pasted in at start of program (can be ignored by
+	 *            Client Side)
+	 */
+	public static void main(String[] args) {
 
 		// Setting up Log File
 
 		DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
 		Date date = new Date();
-		out = new PrintWriter(new FileWriter("PAQlog "
-				+ dateFormat.format(date) + ".txt"), true);
+		try {
+			out = new PrintWriter(new FileWriter("PAQlog "
+					+ dateFormat.format(date) + ".txt"), true);
+		} catch (IOException e1) {
+			print(e1.getMessage());
+			System.exit(1);
+		}
 		Main.print("Current System os is : "
 				+ System.getProperty("os.name").toLowerCase());
 
@@ -61,11 +69,10 @@ public class Main {
 		OptionParser parser = new OptionParser("m::v::s::h::i");
 		OptionSet options = parser.parse(args);
 
-
 		if (options.has("m")) {
 			mod = (String) options.valueOf("m");
 			print((String) options.valueOf("m"));
-		} else{
+		} else {
 			mod = "http://mage-tech.org/PAQ/versioninfo.json";
 			print(mod);
 		}
@@ -103,15 +110,15 @@ public class Main {
 			}
 		} else {
 			try {
-				
+				// Starting Client Side GUI
 				PAQInstallerV3.display();
-				
+
 				/**
 				 * left in for ....
-				 *
-				 * infoBox("Starting PAQ Client Install please close this box to start",
-				 *	"start message");
-				 *client.start.cstart();
+				 * 
+				 * infoBox(
+				 * "Starting PAQ Client Install please close this box to start",
+				 * "start message"); client.start.cstart();
 				 */
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -121,8 +128,10 @@ public class Main {
 	}
 
 	/**
-	 *  main print class for use with logger
-	 * @param msg the message you want printed
+	 * main print class for use with logger
+	 * 
+	 * @param msg
+	 *            the message you want printed
 	 */
 	public static void print(String msg) {
 		System.out.println(msg);
@@ -132,7 +141,9 @@ public class Main {
 
 	/**
 	 * main exit class closes log file before exiting
-	 * @param status if program is exiting with error or not 
+	 * 
+	 * @param status
+	 *            if program is exiting with error or not
 	 */
 	public static void exit(int status) {
 		out.close();
@@ -141,8 +152,11 @@ public class Main {
 
 	/**
 	 * message box pop up
-	 * @param infoMessage message that you want shown
-	 * @param location location that it is called from (not used often)
+	 * 
+	 * @param infoMessage
+	 *            message that you want shown
+	 * @param location
+	 *            location that it is called from (not used often)
 	 */
 	public static void infoBox(String infoMessage, String location) {
 		JOptionPane.showMessageDialog(null, infoMessage,

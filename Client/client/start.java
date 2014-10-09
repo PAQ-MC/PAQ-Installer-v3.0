@@ -131,7 +131,7 @@ public class start {
 			e.printStackTrace();
 		}
 
-		System.exit(0);
+		Main.exit(0);
 	}
 
 }

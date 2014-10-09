@@ -64,6 +64,11 @@ public class GetInstallInfo {
 		new URL(url).openStream()));
 	}
 	
+	/**
+	 * gets the java object for mod packs
+	 * @return the mod pack object
+	 * @throws Exception
+	 */
 	public static ModPacks modpacks() throws Exception {
 		Gson gson = new Gson();
 		BufferedReader br;
@@ -76,6 +81,12 @@ public class GetInstallInfo {
 
 	}
 	
+	/**
+	 * gets just the version info from a mod pack
+	 * @param mod the location of the file being read
+	 * @return the version info
+	 * @throws Exception
+	 */
 	public static Versioninfo Versioninfo(String mod) throws Exception {
 		Gson gson = new Gson();
 		BufferedReader br;

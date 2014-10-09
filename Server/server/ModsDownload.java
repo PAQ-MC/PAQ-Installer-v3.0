@@ -40,7 +40,8 @@ public class ModsDownload {
 				try {
 					modUrl = new URL(obj.mods().get(i).link());
 				} catch (MalformedURLException e) {
-					e.printStackTrace();
+					Main.print(e.getMessage());
+					Main.exit(1);
 				}
 
 				File modfile = new File(Mods17X.toString() + "/"
@@ -64,7 +65,8 @@ public class ModsDownload {
 						StreamUtils.saveTo(is, modfile);
 
 					} catch (IOException e) {
-						e.printStackTrace();
+						Main.print(e.getMessage());
+						Main.exit(1);
 					}
 					
 					if (modfile.length() != obj.mods().get(i).FileSize()) {
@@ -85,10 +87,9 @@ public class ModsDownload {
 					
 					if (cont == 5) {
 
-						System.out
-								.println("Max retry reached Exiting Install Please Try agian later");
+						Main.print("Max retry reached Exiting Install Please Try agian later");
 
-						System.exit(1);
+						Main.exit(1);;
 
 					}
 
@@ -98,8 +99,8 @@ public class ModsDownload {
 			try {
 				Thread.sleep(5000);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				Main.print(e.getMessage());
+				Main.exit(1);;
 			}
 			}
 			
