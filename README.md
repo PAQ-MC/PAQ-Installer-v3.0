@@ -1,7 +1,9 @@
 PAQ-Installer-v3.0
 ==================
 
-PAQ NON Gui Installer for both server and client
+PAQ Installer for both server and client
+
+java doc link http://PAQ-MC.github.io
 
 
 Command line options
