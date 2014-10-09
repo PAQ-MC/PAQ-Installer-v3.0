@@ -65,7 +65,6 @@ public class downloaderBackup {
 	 * sets up and displays the gui
 	 */
 	private void guiBuilder() {
-
 		frm = new JFrame();
 		frm.setType(Type.POPUP);
 		frm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
