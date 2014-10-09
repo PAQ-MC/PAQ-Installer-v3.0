@@ -84,6 +84,7 @@ public class downloaderBackup {
 					totalDataRead = totalDataRead + i;
 					bout.write(data, 0, i);
 					
+					/*
 					if(j <= 30 ){
 						loadingImage.setIcon(img[j]);
 						j++;
@@ -91,9 +92,11 @@ public class downloaderBackup {
 						loadingImage.setIcon(img[0]);
 						j = 1;
 					}
+					*/
 					
 					int percent = Math.abs((totalDataRead * 100) / filesize);
 					loadingStatus.setText("Downloaded: " + percent + "%");
+					
 				}
 			}
 		}

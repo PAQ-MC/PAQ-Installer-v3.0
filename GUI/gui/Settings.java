@@ -1,5 +1,4 @@
 package gui;
-import java.awt.EventQueue;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -8,15 +7,12 @@ import java.awt.Window.Type;
 
 import javax.swing.JLabel;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.util.List;
 
 import javax.swing.JComboBox;
 
 import Json.GetInstallInfo;
 import Json.ModPacks;
-import Json.ModPacks_info;
 import Json.Versioninfo;
 import Json.version;
 
@@ -29,7 +25,6 @@ import javax.swing.DefaultComboBoxModel;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -46,10 +41,10 @@ public class Settings {
 	public static ModPacks modpack;
 	private JComboBox cbModPackVersion;
 	private JComboBox cbModPacks;
-	
+
 	public static int ModPackId;
 	public static String ModPackVersion;
-	
+
 	final File[] Images;
 
 	/**
@@ -95,12 +90,11 @@ public class Settings {
 		cbModPacks.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ModPackId = cbModPacks.getSelectedIndex();
-				
+
 				Versioninfo versioninfo = null;
 				try {
 					versioninfo = GetInstallInfo.Versioninfo(modpack
-							.ModPacks_info().get(ModPackId)
-							.Install_Info());
+							.ModPacks_info().get(ModPackId).Install_Info());
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -108,20 +102,20 @@ public class Settings {
 				List<version> versions = versioninfo.versions();
 				cbModPackVersion.setModel(new DefaultComboBoxModel(versions
 						.toArray()));
-				cbModPackVersion.setSelectedIndex(versioninfo.versions().size()-1);
+				cbModPackVersion
+						.setSelectedIndex(versioninfo.versions().size() - 1);
 				cbModPackVersion.repaint();
 
 				// image Downloader
 
-				ImageIcon imgThisImg = new ImageIcon(Images[ModPackId].getAbsolutePath());
+				ImageIcon imgThisImg = new ImageIcon(Images[ModPackId]
+						.getAbsolutePath());
 
 				System.out.println(imgThisImg);
 
 				PAQInstallerV3.window.lblNewLabel.setIcon(imgThisImg);
 				PAQInstallerV3.window.lblNewLabel.repaint();
 
-				
-				
 				ModPackVersion = cbModPackVersion.getSelectedItem().toString();
 
 			}
@@ -137,6 +131,8 @@ public class Settings {
 		cbModPackVersion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ModPackVersion = cbModPackVersion.getSelectedItem().toString();
+
+				// TODO:note location
 			}
 		});
 		Versioninfo versioninfo = GetInstallInfo
@@ -155,24 +151,23 @@ public class Settings {
 
 		return ModPack;
 	}
-	
+
 	private File[] getimages() {
 		File[] Images = new File[modpack.ModPacks_info().size()];
-		
-		for (int i = 0; i <= modpack.ModPacks_info().size() -1; i++) {
-			
+
+		for (int i = 0; i <= modpack.ModPacks_info().size() - 1; i++) {
+
 			OutputStream out = null;
 			URLConnection conn = null;
 			InputStream in = null;
 			File Tempimage = new File("tempimage" + i + ".jpg");
-			
+
 			Tempimage.deleteOnExit();
 
 			try {
-				URL url = new URL(modpack.ModPacks_info()
-						.get(i).Logo_location());
-				out = new BufferedOutputStream(new FileOutputStream(
-						Tempimage));
+				URL url = new URL(modpack.ModPacks_info().get(i)
+						.Logo_location());
+				out = new BufferedOutputStream(new FileOutputStream(Tempimage));
 				conn = url.openConnection();
 				in = conn.getInputStream();
 				byte[] buffer = new byte[1024];
@@ -199,22 +194,23 @@ public class Settings {
 				} catch (IOException ioe) {
 				}
 			}
-			
+
 			Images[i] = Tempimage;
-			
+
 		}
-		
-		
+
 		return Images;
-		
+
 	}
 
 	public JComboBox getCbModPackVersion() {
 		return cbModPackVersion;
 	}
+
 	public JComboBox getCbModPacks() {
 		return cbModPacks;
 	}
+
 	public JFrame getFrmSettings() {
 		return frmSettings;
 	}
