@@ -24,7 +24,7 @@ import common.StreamUtils;
 public class start {
 	/**
 	 * main function for server side install
-	 * @throws Exception
+	 * @throws Exception 
 	 */
 	public static void svstart()
 			throws Exception {
