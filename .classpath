@@ -6,13 +6,15 @@
 	<classpathentry kind="src" path="Json"/>
 	<classpathentry kind="src" path="GUI"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
-	<classpathentry kind="lib" path="F:/PAQ Installer Code/PAQ-Installer-v3.0/Resorces/argo-3.7.jar"/>
-	<classpathentry kind="lib" path="F:/PAQ Installer Code/PAQ-Installer-v3.0/Resorces/forms-1.3.0.jar"/>
-	<classpathentry kind="lib" path="F:/PAQ Installer Code/PAQ-Installer-v3.0/Resorces/forms-1.3.0-src.zip"/>
-	<classpathentry kind="lib" path="F:/PAQ Installer Code/PAQ-Installer-v3.0/Resorces/gson-2.2.4.jar"/>
-	<classpathentry kind="lib" path="F:/PAQ Installer Code/PAQ-Installer-v3.0/Resorces/guava-14.0.1.jar"/>
-	<classpathentry kind="lib" path="F:/PAQ Installer Code/PAQ-Installer-v3.0/Resorces/jcl-core-2.5.jar"/>
-	<classpathentry kind="lib" path="F:/PAQ Installer Code/PAQ-Installer-v3.0/Resorces/jopt-simple-4.6.jar"/>
-	<classpathentry kind="lib" path="F:/PAQ Installer Code/PAQ-Installer-v3.0/Resorces/zip4j_1.3.2.jar"/>
+	<classpathentry kind="lib" path="/Users/IsaacWheeler/PAQ-Installer-v3.0/Resorces/argo-3.7.jar"/>
+	<classpathentry kind="lib" path="/Users/IsaacWheeler/PAQ-Installer-v3.0/Resorces/forms-1.3.0-src.zip"/>
+	<classpathentry kind="lib" path="/Users/IsaacWheeler/PAQ-Installer-v3.0/Resorces/forms-1.3.0.jar"/>
+	<classpathentry kind="lib" path="/Users/IsaacWheeler/PAQ-Installer-v3.0/Resorces/gson-2.2.4.jar"/>
+	<classpathentry kind="lib" path="/Users/IsaacWheeler/PAQ-Installer-v3.0/Resorces/guava-14.0.1.jar"/>
+	<classpathentry kind="lib" path="/Users/IsaacWheeler/PAQ-Installer-v3.0/Resorces/jcl-core-2.5.jar"/>
+	<classpathentry kind="lib" path="/Users/IsaacWheeler/PAQ-Installer-v3.0/Resorces/jopt-simple-4.6.jar"/>
+	<classpathentry kind="lib" path="/Users/IsaacWheeler/PAQ-Installer-v3.0/Resorces/zip4j_1.3.2.jar"/>
+	<classpathentry kind="lib" path="/Users/IsaacWheeler/PAQ-Installer-v3.0/Resorces/commons-io-2.4/commons-io-2.4.jar"/>
+	<classpathentry kind="lib" path="/Users/IsaacWheeler/PAQ-Installer-v3.0/Resorces/commons-exec-1.2/commons-exec-1.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

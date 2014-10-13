@@ -24,13 +24,15 @@ import common.StreamUtils;
 
 /**
  * main code for client install
+ * 
  * @author IsaacWheeler
- *
+ * 
  */
 public class start {
 
 	/**
 	 * main function for all client side code, for installing mod pack
+	 * 
 	 * @throws InterruptedException
 	 */
 	public static void cstart() throws InterruptedException {
@@ -47,7 +49,7 @@ public class start {
 
 		try {
 			String McVersion = obj.forge().get(0).id();
-			McVersion = McVersion.substring(0, 5); // TODO: find better method
+			McVersion = McVersion.substring(0, 6); // TODO: find better method
 			if (!getforgeid.findLastUsedMcVersion().contentEquals(McVersion)) {
 				Main.infoBox("Please Run: " + McVersion
 						+ " At least once, You Currently Have selected: "
@@ -57,16 +59,16 @@ public class start {
 						+ getforgeid.findLastUsedMcVersion());
 				Main.exit(0);
 			}
-			try {
+			if (getforgeid.findForgeProfile() != null) {
 				if (getforgeid.findForgeProfile().contains(
 						obj.forge().get(0).id())) { // Possible profile find
 													// issue
 					Main.print("Forge is already installed moving on to next step");
 				} else {
-					Forgeinstall.forge(false, obj.forge().get(0).installer());
+					Forgeinstall.forge(obj.forge().get(0).installer());
 				}
-			} catch (Exception e) {
-				Forgeinstall.forge(false, obj.forge().get(0).installer());
+			} else {
+				Forgeinstall.forge(obj.forge().get(0).installer());
 			}
 
 		} catch (Exception e) {
@@ -110,7 +112,7 @@ public class start {
 						"About to install mods, the twitching box is to indicate status of download");
 
 		ModsDownload.modsDownload(obj, Mods);
-		
+
 		try {
 			JsonEditCode.Main(AppPath.toString() + "/.minecraft",
 					PAQ.toString(), obj.forge().get(0).id());
@@ -130,7 +132,7 @@ public class start {
 		}
 
 		Main.exit(0);
-		
+
 	}
 
 }

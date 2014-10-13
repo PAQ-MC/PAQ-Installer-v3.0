@@ -14,18 +14,25 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
+
 /**
- * Class File for the installation of forge 
+ * Class File for the installation of forge
+ * 
  * @author IsaacWheeler
- *
+ * 
  */
 public class Forgeinstall {
-	
+
 	/**
-	 * code for installing server Side via forge installer jar not currently used left for postarity
-	 * @param isServer boolean to check if server
-	 * @param forgeUrl location of forge file for downloading
-	 * @param forgeDir location of forge file that was downloaded
+	 * code for installing server Side via forge installer jar not currently
+	 * used left for postarity
+	 * 
+	 * @param isServer
+	 *            boolean to check if server
+	 * @param forgeUrl
+	 *            location of forge file for downloading
+	 * @param forgeDir
+	 *            location of forge file that was downloaded
 	 * @throws IOException
 	 * @throws ClassNotFoundException
 	 * @throws NoSuchMethodException
@@ -45,26 +52,26 @@ public class Forgeinstall {
 		}
 
 		Main.print("Starting Forge installer");
-		UglyLaunchTempPatch.jar(tmp, isServer);
+		UglyLaunchTempPatch.jar(tmp);
 	}
 
 	/**
 	 * code for installing client side forge
-	 * @param isServer boolean for if it is server or not 
-	 * @param forgeUrl url of forge for download 
+	 * 
+	 * @param forgeUrl
+	 *            url of forge for download
 	 * @throws Exception
 	 */
-	public static void forge(boolean isServer, String forgeUrl)
-			throws Exception {
+	public static void forge(String forgeUrl) throws Exception {
 		Main.print("Downloading Forge");
 
 		File tmp = File.createTempFile("forge", ".jar");
 		tmp.deleteOnExit();
 
-			downloaderBackup download = new downloaderBackup(forgeUrl, tmp);
-			download.downloader();
+		downloaderBackup download = new downloaderBackup(forgeUrl, tmp);
+		download.downloader();
 
 		Main.print("Starting Forge installer");
-		UglyLaunchTempPatch.jar(tmp, isServer);
+		UglyLaunchTempPatch.jar(tmp);
 	}
 }
