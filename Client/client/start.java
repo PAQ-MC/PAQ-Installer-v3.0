@@ -114,17 +114,14 @@ public class start {
 		ModsDownload.modsDownload(obj, Mods);
 
 		try {
-			JsonEditCode.Main(AppPath.toString() + "/.minecraft",
+			JsonEditCode.Main(GetApplicationPath.minecraftpath(),
 					PAQ.toString(), obj.forge().get(0).id());
 		} catch (IOException | InvalidSyntaxException e) {
 			e.printStackTrace();
 		}
 
 		Main.print("Client install done");
-		// JOptionPane.showMessageDialog(PAQInstallerV3.window.frame,
-		// "Install done please enjoy the mod pack");
-		JOptionPane.showMessageDialog(null,
-				"Install done please enjoy the mod pack");
+		Main.infoBox("Install done please enjoy the mod pack","Install Done");
 		try {
 			Thread.sleep(1000);
 		} catch (InterruptedException e) {

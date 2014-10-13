@@ -111,15 +111,12 @@ public class Main {
 		} else {
 			try {
 				// Starting Client Side GUI
-				PAQInstallerV3.display();
+				// PAQInstallerV3.display();
 
-				/**
-				 * left in for ....
-				 * 
-				 * infoBox(
-				 * "Starting PAQ Client Install please close this box to start",
-				 * "start message"); client.start.cstart();
-				 */
+				infoBox("Starting PAQ Client Install please close this box to start",
+						"start message");
+				client.start.cstart();
+
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

@@ -53,8 +53,6 @@ public class downloaderBackup {
 		// making it visable to the whole class
 		file = _file;
 		site = _site;
-		// loading the loading images
-		loadimages();
 		// displaying the gui
 		guiBuilder();
 		//sets the file name
@@ -71,11 +69,10 @@ public class downloaderBackup {
 		textLabel = new JLabel("Downloading: error getting file name", SwingConstants.CENTER);
 		frm.getContentPane().add(textLabel);
 		loadingImage = new JLabel("Downloaded: 0%", SwingConstants.CENTER);
-		loadingImage.setIcon(img[0]);
 		frm.getContentPane().add(loadingImage);
 		frm.setVisible(true);
 		frm.getContentPane().setLayout(new FlowLayout());
-		frm.setSize(300, 150);
+		frm.setSize(300, 80);
 	}
 	
 	/**
@@ -115,13 +112,6 @@ public class downloaderBackup {
 					totalDataRead = totalDataRead + i;
 					bout.write(data, 0, i);
 
-					if (j <= 30) {
-						loadingImage.setIcon(img[j]);
-						j++;
-					} else {
-						loadingImage.setIcon(img[0]);
-						j = 1;
-					}
 
 					int percent = Math.abs((totalDataRead * 100) / filesize);
 					loadingImage.setText("Downloaded: " + percent + "%");
