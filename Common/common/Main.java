@@ -6,13 +6,9 @@ To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/
 
 package common;
 
-import gui.PAQInstallerV3;
-
-import java.awt.EventQueue;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.lang.reflect.InvocationTargetException;
 import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
